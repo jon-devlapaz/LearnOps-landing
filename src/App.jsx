@@ -766,7 +766,7 @@ export default function LearnOpsLanding() {
       </footer>
 
       {/* ─── CHECKOUT MODAL ─── */}
-      {showCheckout && <Checkout onClose={() => setShowWaitlistModal(false)} />}
+      {showWaitlistModal && <WaitlistModal onClose={() => setShowWaitlistModal(false)} />}
     </div>
   );
 }
