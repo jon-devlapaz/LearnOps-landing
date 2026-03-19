@@ -732,9 +732,9 @@ export default function LearnOpsLanding() {
             Join the Waitlist
           </button>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-5 text-xs text-slate-500">
-            <span className="flex items-center gap-1"><Shield size={12} /> Not charged until launch</span>
+            <span className="flex items-center gap-1"><Shield size={12} /> No spam guarantee</span>
             <span className="hidden sm:inline">·</span>
-            <span className="flex items-center gap-1"><X size={12} /> Cancel in one click</span>
+            <span className="flex items-center gap-1"><Target size={12} /> Limited beta seats</span>
             <span className="hidden sm:inline">·</span>
             <span className="flex items-center gap-1"><Lock size={12} /> FTC compliant</span>
           </div>
@@ -754,16 +754,13 @@ export default function LearnOpsLanding() {
             <span>© 2026 LearnOps</span>
             <span className="cursor-pointer hover:text-slate-400 transition-colors">Privacy</span>
             <span className="cursor-pointer hover:text-slate-400 transition-colors">Terms</span>
-            <span className="cursor-pointer hover:text-slate-400 transition-colors">Cancellation Policy</span>
+            <span className="cursor-pointer hover:text-slate-400 transition-colors">Privacy Policy</span>
           </div>
         </div>
         {/* FTC compliance footer */}
         <div className="max-w-5xl mx-auto mt-4 pt-4 border-t border-slate-800/30">
           <p className="text-[10px] text-slate-700 text-center leading-relaxed max-w-2xl mx-auto">
-            LearnOps pre-order: Your payment method is authorized but not charged until the product launches.
-            You will receive email notification 7 days prior to first charge. You may cancel at any time through
-            your online account dashboard with a single click. No telephone call or written request is required
-            to cancel. Compliant with 16 CFR Part 425 (FTC Negative Option Rule, effective 2026).
+            This landing page is part of our private beta waitlist campaign. We respect your inbox and will only contact you regarding your waitlist status and official LearnOps launch updates.
           </p>
         </div>
       </footer>
