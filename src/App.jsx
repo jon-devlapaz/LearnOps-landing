@@ -634,7 +634,7 @@ export default function LearnOpsLanding() {
           <div className="text-center mb-12">
             <p className="text-xs font-semibold text-amber-400 tracking-widest uppercase mb-3">Early users</p>
             <h2 className={`font-display font-bold text-3xl sm:text-4xl ${textH} mb-3`}>
-              Real students. Real results.
+              Fake students. Potentially Real results.
             </h2>
             <p className={`${textP} text-sm`}>From our private beta cohort of 24 students.</p>
           </div>
