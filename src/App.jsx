@@ -225,26 +225,51 @@ function TestimonialCard({ name, role, quote, metric, delay, visible }) {
   );
 }
 
-// ─── Multi-Step Checkout ───
-function Checkout({ onClose }) {
-  const [step, setStep] = useState(1);
+// ─── Waitlist Modal ───
+function WaitlistModal({ onClose }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [agreed, setAgreed] = useState(false);
-  const [cardNum, setCardNum] = useState("");
-  const [expiry, setExpiry] = useState("");
-  const [cvc, setCvc] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [showCvc, setShowCvc] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const canStep2 = email && name && emailValid;
-  const canStep3 = agreed;
-  const canSubmit = cardNum.length >= 15 && expiry.length >= 4 && cvc.length >= 3;
+  const canSubmit = email && name && emailValid;
 
-  function handleSubmit() {
-    // In production: Stripe.createPaymentMethod() → POST to backend
-    setSubmitted(true);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!canSubmit) return;
+    
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE",
+          name: name,
+          email: email,
+          subject: "New LearnOps Waitlist Sign-up",
+          from_name: "LearnOps Waitlist",
+        }),
+      });
+      
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -255,18 +280,11 @@ function Checkout({ onClose }) {
             <CheckCircle2 size={32} className="text-emerald-400" />
           </div>
           <h3 className="text-xl font-bold text-white mb-2">You're on the list!</h3>
-          <p className="text-slate-400 text-sm mb-4 leading-relaxed">
-            Your card will <strong className="text-slate-300">not</strong> be charged until LearnOps officially launches.
-            We'll email you at <strong className="text-slate-300">{email}</strong> before any charge.
+          <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+            Keep an eye on <strong className="text-slate-300">{email}</strong>. We'll send you an invite as soon as a spot opens up in the private beta.
           </p>
-          <div className="rounded-lg bg-slate-700/50 border border-slate-600/50 p-3 mb-5">
-            <p className="text-xs text-slate-400">
-              <Lock size={12} className="inline mr-1 text-slate-500" />
-              You can cancel anytime with one click — no calls, no hoops.
-            </p>
-          </div>
           <button onClick={onClose} className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-colors">
-            Done
+            Close
           </button>
         </div>
       </div>
@@ -275,205 +293,63 @@ function Checkout({ onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-      <div className="bg-slate-800 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden">
-        {/* Header */}
+      <div className="bg-slate-800 border border-slate-700 rounded-2xl max-w-sm w-full overflow-hidden">
         <div className="flex items-center justify-between p-5 border-b border-slate-700/50">
           <div>
-            <h3 className="text-lg font-bold text-white">Secure Early Access</h3>
-            <p className="text-xs text-slate-500 mt-0.5">$15/mo · Not charged until launch</p>
+            <h3 className="text-lg font-bold text-white">Join the Waitlist</h3>
+            <p className="text-xs text-slate-500 mt-0.5">Secure your spot for early access</p>
           </div>
           <button onClick={onClose} className="text-slate-500 hover:text-slate-300 transition-colors">
             <X size={20} />
           </button>
         </div>
 
-        {/* Progress */}
-        <div className="flex items-center gap-0 px-5 pt-4 pb-2">
-          {[1, 2, 3].map((s) => (
-            <div key={s} className="flex items-center flex-1">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-colors ${
-                step >= s ? "bg-indigo-600 text-white" : "bg-slate-700 text-slate-500"
-              }`}>
-                {step > s ? <Check size={14} /> : s}
-              </div>
-              {s < 3 && (
-                <div className={`flex-1 h-px mx-2 transition-colors ${step > s ? "bg-indigo-600" : "bg-slate-700"}`} />
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="flex px-5 mb-3">
-          <span className="flex-1 text-[10px] text-slate-500">Details</span>
-          <span className="flex-1 text-[10px] text-slate-500 text-center">Confirm</span>
-          <span className="flex-1 text-[10px] text-slate-500 text-right">Payment</span>
-        </div>
-
-        {/* Steps */}
-        <div className="px-5 pb-5">
-          {step === 1 && (
-            <div className="space-y-3">
-              <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1.5">Full name</label>
-                <div className="relative">
-                  <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Jane Smith"
-                    className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-9 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1.5">Email address</label>
-                <div className="relative">
-                  <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="jane@university.edu"
-                    className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-9 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-                {email && !emailValid && (
-                  <p className="text-xs text-amber-400 mt-1 flex items-center gap-1">
-                    <AlertCircle size={11} /> Enter a valid email
-                  </p>
-                )}
-              </div>
-              <button
-                disabled={!canStep2}
-                onClick={() => setStep(2)}
-                className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 disabled:text-slate-500 text-white font-semibold text-sm transition-colors mt-2"
-              >
-                Continue <ChevronRight size={14} className="inline ml-1" />
-              </button>
+        <form onSubmit={handleSubmit} className="p-5 space-y-4">
+          {error && (
+            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
+              <AlertCircle size={14} /> {error}
             </div>
           )}
-
-          {step === 2 && (
-            <div className="space-y-4">
-              <div className="rounded-xl bg-slate-900/50 border border-slate-700/50 p-4">
-                <div className="flex justify-between items-baseline mb-3">
-                  <span className="text-sm font-semibold text-white">LearnOps Early Access</span>
-                  <span className="text-lg font-bold text-white">$15<span className="text-xs text-slate-500 font-normal">/mo</span></span>
-                </div>
-                <ul className="space-y-2">
-                  {["Full 4-stage pipeline", "Unlimited knowledge maps", "AI Socratic drilling", "ADHD executive scaffolding"].map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-xs text-slate-400">
-                      <Check size={13} className="text-emerald-400 shrink-0" /> {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {/* FTC compliance notice */}
-              <div className="rounded-xl bg-emerald-500/5 border border-emerald-500/20 p-4">
-                <p className="text-xs text-emerald-300 font-semibold mb-1.5 flex items-center gap-1.5">
-                  <Shield size={13} /> Pre-order guarantee
-                </p>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Your card is <strong className="text-slate-300">not charged until launch</strong>. You'll receive an
-                  email 7 days before billing begins. You may cancel with <strong className="text-slate-300">one click</strong> at
-                  any time — online, no phone calls, no hoops. Compliant with the FTC Negative Option Rule (2026).
-                </p>
-              </div>
-              <label className="flex items-start gap-3 cursor-pointer group">
-                <input
-                  type="checkbox"
-                  checked={agreed}
-                  onChange={(e) => setAgreed(e.target.checked)}
-                  className="mt-0.5 accent-indigo-500"
-                />
-                <span className="text-xs text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">
-                  I understand my card will not be charged until LearnOps launches and I can cancel anytime with one click.
-                </span>
-              </label>
-              <div className="flex gap-3">
-                <button onClick={() => setStep(1)} className="flex-1 py-3 rounded-xl border border-slate-600 text-slate-300 font-medium text-sm hover:border-slate-500 transition-colors">
-                  Back
-                </button>
-                <button
-                  disabled={!canStep3}
-                  onClick={() => setStep(3)}
-                  className="flex-1 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 disabled:text-slate-500 text-white font-semibold text-sm transition-colors"
-                >
-                  Continue <ChevronRight size={14} className="inline ml-1" />
-                </button>
-              </div>
+          <div>
+            <label className="block text-xs font-medium text-slate-400 mb-1.5">First name</label>
+            <div className="relative">
+              <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Jane"
+                className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-9 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"
+                required
+              />
             </div>
-          )}
-
-          {step === 3 && (
-            <div className="space-y-3">
-              <div>
-                <label className="block text-xs font-medium text-slate-400 mb-1.5">Card number</label>
-                <div className="relative">
-                  <CreditCard size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                  <input
-                    type="text"
-                    value={cardNum}
-                    onChange={(e) => setCardNum(e.target.value.replace(/\D/g, "").slice(0, 16))}
-                    placeholder="4242 4242 4242 4242"
-                    className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-9 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors tracking-wider"
-                  />
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <div className="flex-1">
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">Expiry</label>
-                  <input
-                    type="text"
-                    value={expiry}
-                    onChange={(e) => setExpiry(e.target.value.replace(/[^\d/]/g, "").slice(0, 5))}
-                    placeholder="MM/YY"
-                    className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="block text-xs font-medium text-slate-400 mb-1.5">CVC</label>
-                  <div className="relative">
-                    <input
-                      type={showCvc ? "text" : "password"}
-                      value={cvc}
-                      onChange={(e) => setCvc(e.target.value.replace(/\D/g, "").slice(0, 4))}
-                      placeholder="···"
-                      className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowCvc(!showCvc)}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-400"
-                    >
-                      {showCvc ? <EyeOff size={14} /> : <Eye size={14} />}
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 py-1">
-                <Lock size={12} className="text-slate-600" />
-                <span className="text-[10px] text-slate-600">Secured with 256-bit encryption · Powered by Stripe</span>
-              </div>
-              <div className="flex gap-3">
-                <button onClick={() => setStep(2)} className="flex-1 py-3 rounded-xl border border-slate-600 text-slate-300 font-medium text-sm hover:border-slate-500 transition-colors">
-                  Back
-                </button>
-                <button
-                  disabled={!canSubmit}
-                  onClick={handleSubmit}
-                  className="flex-1 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 disabled:text-slate-500 text-white font-semibold text-sm transition-colors"
-                >
-                  <Lock size={13} className="inline mr-1.5 -mt-0.5" />
-                  Secure Pre-order
-                </button>
-              </div>
-              <p className="text-[10px] text-slate-600 text-center leading-relaxed pt-1">
-                Your card will not be charged. Cancel anytime with one click — no calls required.
-              </p>
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-slate-400 mb-1.5">Email address</label>
+            <div className="relative">
+              <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="jane@university.edu"
+                className="w-full bg-slate-900/70 border border-slate-600 rounded-lg px-9 py-2.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors"
+                required
+              />
             </div>
-          )}
-        </div>
+          </div>
+          <button
+            type="submit"
+            disabled={!canSubmit || loading}
+            className="w-full py-3 mt-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:bg-slate-700 disabled:text-slate-500 text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2"
+          >
+            {loading ? "Joining..." : "Join Waitlist"}
+            {!loading && <ChevronRight size={14} />}
+          </button>
+          <p className="text-[10px] text-slate-500 text-center leading-relaxed">
+            No spam. Unsubscribe anytime.
+          </p>
+        </form>
       </div>
     </div>
   );
@@ -484,7 +360,7 @@ function Checkout({ onClose }) {
 // ═══════════════════════════════════════════════
 export default function LearnOpsLanding() {
   const [darkMode, setDarkMode] = useState(true);
-  const [showCheckout, setShowCheckout] = useState(false);
+  const [showWaitlistModal, setShowWaitlistModal] = useState(false);
 
   // Scroll visibility refs
   const [probRef, probVis] = useInView(0.1);
@@ -533,10 +409,10 @@ export default function LearnOpsLanding() {
               {darkMode ? <Sun size={14} /> : <Moon size={14} />}
             </button>
             <button
-              onClick={() => setShowCheckout(true)}
+              onClick={() => setShowWaitlistModal(true)}
               className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition-colors"
             >
-              Pre-order · $15/mo
+              Join the Waitlist
             </button>
           </div>
         </div>
@@ -571,15 +447,15 @@ export default function LearnOpsLanding() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => setShowCheckout(true)}
+              onClick={() => setShowWaitlistModal(true)}
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-base shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5"
             >
-              Secure Early Access — $15/mo
+              Join the Waitlist
               <ArrowRight size={16} className="inline ml-2" />
             </button>
             <p className="text-xs text-slate-500 flex items-center gap-1.5">
               <Shield size={12} />
-              Not charged until launch · Cancel in 1 click
+              Limited spots available for our private beta
             </p>
           </div>
         </div>
@@ -850,10 +726,10 @@ export default function LearnOpsLanding() {
             neurocognitive study pipeline built for how your brain actually works.
           </p>
           <button
-            onClick={() => setShowCheckout(true)}
+            onClick={() => setShowWaitlistModal(true)}
             className="px-10 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-lg shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-0.5"
           >
-            Secure Early Access — $15/mo
+            Join the Waitlist
           </button>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-5 text-xs text-slate-500">
             <span className="flex items-center gap-1"><Shield size={12} /> Not charged until launch</span>
@@ -893,7 +769,7 @@ export default function LearnOpsLanding() {
       </footer>
 
       {/* ─── CHECKOUT MODAL ─── */}
-      {showCheckout && <Checkout onClose={() => setShowCheckout(false)} />}
+      {showCheckout && <Checkout onClose={() => setShowWaitlistModal(false)} />}
     </div>
   );
 }
