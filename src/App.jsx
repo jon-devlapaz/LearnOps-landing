@@ -230,11 +230,11 @@ const TESTIMONIALS = [
 const FAQ_ITEMS = [
   {
     question: "Do I need to install anything?",
-    answer: "HyFeyn runs in your browser. No extensions, no desktop apps, no plugins. Paste a link or upload a transcript, and the pipeline starts immediately.",
+    answer: "Hy-Feyn runs in your browser. No extensions, no desktop apps, no plugins. Paste a link or upload a transcript, and the pipeline starts immediately.",
   },
   {
     question: "Is this just fancy flashcards?",
-    answer: "No. Flashcards test isolated facts. HyFeyn stress-tests your understanding of causal mechanisms — how and why things work, not just what they're called. The Socratic drilling adapts to your specific gaps.",
+    answer: "No. Flashcards test isolated facts. Hy-Feyn stress-tests your understanding of causal mechanisms — how and why things work, not just what they're called. The Socratic drilling adapts to your specific gaps.",
   },
   {
     question: "What if I don't have ADHD?",
@@ -266,7 +266,7 @@ const FLOW_ITEMS = [
 ];
 
 // ─── Main App ───
-export default function HyFeynLanding() {
+export default function Hy-FeynLanding() {
   const [probRef, probVis] = useInView(0.1);
   const [pipeRef, pipeVis] = useInView(0.1);
   const [previewRef, previewVis] = useInView(0.1);
@@ -293,8 +293,8 @@ export default function HyFeynLanding() {
           access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
           name: firstName,
           email,
-          subject: "HyFeyn Waitlist Sign-up",
-          from_name: "HyFeyn Waitlist",
+          subject: "Hy-Feyn Waitlist Sign-up",
+          from_name: "Hy-Feyn Waitlist",
         }),
       });
       const result = await res.json();
@@ -313,7 +313,7 @@ export default function HyFeynLanding() {
       {/* ─── NAV ─── */}
       <nav className="fixed top-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-xl">
         <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-          <div className="text-2xl font-bold tracking-tighter text-[#c4c0ff] font-display">HyFeyn</div>
+          <div className="text-2xl font-bold tracking-tighter text-[#c4c0ff] font-display">Hy-Feyn</div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#pipeline" className="text-[#dae2fd]/70 font-display font-bold text-lg tracking-tight hover:text-[#dae2fd] transition-all duration-300">Pipeline</a>
             <a href="#results" className="text-[#dae2fd]/70 font-display font-bold text-lg tracking-tight hover:text-[#dae2fd] transition-all duration-300">Results</a>
@@ -355,7 +355,7 @@ export default function HyFeynLanding() {
             <div className="absolute -inset-4 bg-[#3cddc7]/10 blur-[100px] rounded-full" />
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYd6gJ1WZobAo8GiOXO-s5jmUUdzWCrVbfanMy1OKRZmTjX_qHW97B2xEuHLYAYzEDcepuqWwvX_idHvVOWaN9fRatPxGx_MxoaWP8P2QEjeK71OwZkYADRWEA4mIEIlUQoRksIjv1l1BWrc6a8_YbYSxHR3d1J37Q5MrUQFEacrkO4SE6K9sOc-kCxJP_sGPeOFIIFJce8XTJFRzKa12lB3SFLd3aP5NEQY3SrP-T1Y1rnl7xDqGwRiiFUH47Fj46hG3jOcDfBNYx"
-              alt="3D isometric visualization of the HyFeyn study pipeline"
+              alt="3D isometric visualization of the Hy-Feyn study pipeline"
               className="relative z-10 w-full drop-shadow-2xl"
             />
           </div>
@@ -383,7 +383,7 @@ export default function HyFeynLanding() {
               </ul>
             </div>
             <div className="p-12 bg-[#222a3d]">
-              <h3 className="font-display text-3xl font-bold mb-8 text-[#3cddc7]">The HyFeyn Flow</h3>
+              <h3 className="font-display text-3xl font-bold mb-8 text-[#3cddc7]">The Hy-Feyn Flow</h3>
               <ul className="space-y-6">
                 {FLOW_ITEMS.map((item, i) => (
                   <li key={i} className="flex items-start gap-4">
@@ -461,7 +461,7 @@ export default function HyFeynLanding() {
               {/* iframe */}
               <iframe
                 src="https://jon-devlapaz.github.io/LearnOps-tamagachi/"
-                title="HyFeyn MVP"
+                title="Hy-Feyn MVP"
                 className="w-full border-0"
                 style={{ height: "600px" }}
                 loading="lazy"
@@ -496,7 +496,7 @@ export default function HyFeynLanding() {
                   Built for ADHD brains — not adapted from neurotypical tools.
                 </h3>
                 <p className="text-sm text-[#c8c4d3] leading-relaxed mb-5">
-                  HyFeyn isn't a study app with an "ADHD mode" toggle. The entire pipeline was designed
+                  Hy-Feyn isn't a study app with an "ADHD mode" toggle. The entire pipeline was designed
                   around executive function constraints from the ground up.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3">
@@ -554,7 +554,7 @@ export default function HyFeynLanding() {
                 </div>
                 <h3 className="text-2xl font-display font-bold text-[#dae2fd] mb-2">You're on the list!</h3>
                 <p className="text-[#c8c4d3] text-sm leading-relaxed max-w-sm mx-auto">
-                  We'll notify <strong className="text-[#dae2fd]">{email}</strong> the moment HyFeyn is ready for you.
+                  We'll notify <strong className="text-[#dae2fd]">{email}</strong> the moment Hy-Feyn is ready for you.
                 </p>
               </div>
             ) : (
@@ -608,8 +608,8 @@ export default function HyFeynLanding() {
       <footer className="w-full border-t border-[#dae2fd]/10 bg-[#0b1326]">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8 w-full max-w-7xl mx-auto">
           <div className="flex flex-col gap-2">
-            <div className="font-display font-bold text-[#c4c0ff] text-xl">HyFeyn</div>
-            <p className="text-sm tracking-wide text-[#dae2fd]/50">© 2026 HyFeyn. AI-Augmented Neurocognitive Pipelines.</p>
+            <div className="font-display font-bold text-[#c4c0ff] text-xl">Hy-Feyn</div>
+            <p className="text-sm tracking-wide text-[#dae2fd]/50">© 2026 Hy-Feyn. AI-Augmented Neurocognitive Pipelines.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-8">
             <a href="#" className="text-sm tracking-wide text-[#dae2fd]/50 hover:text-[#c4c0ff] underline decoration-[#3cddc7]/30 transition-colors">Privacy Policy</a>
