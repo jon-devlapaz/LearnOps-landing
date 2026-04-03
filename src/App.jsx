@@ -29,14 +29,14 @@ function useInView(threshold = 0.15) {
 function GradientDef({ id, accent }) {
   return (
     <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stopColor={accent} stopOpacity="0.3" />
+      <stop offset="0%" stopColor={accent} stopOpacity="0.25" />
       <stop offset="100%" stopColor={accent} stopOpacity="0.05" />
     </linearGradient>
   );
 }
 
 // ─── Isometric SVG Illustrations ───
-function IsoExtraction({ accent = "#c4c0ff" }) {
+function IsoExtraction({ accent = "#9067C6" }) {
   return (
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
       <defs><GradientDef id="ge1" accent={accent} /></defs>
@@ -58,13 +58,13 @@ function IsoExtraction({ accent = "#c4c0ff" }) {
   );
 }
 
-function IsoVault({ accent = "#3cddc7" }) {
+function IsoVault({ accent = "#8D86C9" }) {
   return (
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
       <defs><GradientDef id="gv1" accent={accent} /></defs>
       <path d="M100 50 L150 75 L150 135 L100 160 L50 135 L50 75Z" fill="url(#gv1)" stroke={accent} strokeWidth="1.5" />
-      <path d="M100 50 L100 110 L50 135 L50 75Z" fill={accent} fillOpacity="0.08" />
-      <path d="M100 110 L150 135 L150 75 L100 50" fill={accent} fillOpacity="0.04" />
+      <path d="M100 50 L100 110 L50 135 L50 75Z" fill={accent} fillOpacity="0.12" />
+      <path d="M100 110 L150 135 L150 75 L100 50" fill={accent} fillOpacity="0.06" />
       <path d="M100 50 L100 110" stroke={accent} strokeWidth="1" strokeOpacity="0.4" />
       <path d="M50 75 L100 110 L150 75" stroke={accent} strokeWidth="1" strokeOpacity="0.3" />
       <path d="M70 87 L70 125" stroke={accent} strokeWidth="0.5" strokeOpacity="0.3" />
@@ -77,7 +77,7 @@ function IsoVault({ accent = "#3cddc7" }) {
   );
 }
 
-function IsoreFeyn({ accent = "#fbbf24" }) {
+function IsoreFeyn({ accent = "#9067C6" }) {
   return (
     <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
       <defs><GradientDef id="gd1" accent={accent} /></defs>
@@ -99,16 +99,16 @@ function IsoreFeyn({ accent = "#fbbf24" }) {
 function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-[#474551]/40">
+    <div className="border-b border-outline-variant/40">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
-        <span className="text-[#dae2fd]/80 font-medium text-base pr-4 group-hover:text-[#dae2fd] transition-colors">{question}</span>
-        <ChevronDown size={18} className={`text-[#928f9d] shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+        <span className="text-ink font-medium text-base pr-4 group-hover:text-primary transition-colors">{question}</span>
+        <ChevronDown size={18} className={`text-primary shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-48 pb-5" : "max-h-0"}`}>
-        <p className="text-[#c8c4d3] text-sm leading-relaxed">{answer}</p>
+        <p className="text-ink-muted text-sm leading-relaxed">{answer}</p>
       </div>
     </div>
   );
@@ -118,7 +118,7 @@ function FAQItem({ question, answer }) {
 function StageCard({ number, title, subtitle, description, illustration, accentClass, delay, visible }) {
   return (
     <div
-      className={`group rounded-lg border border-[#474551]/10 bg-[#131b2e] p-8 transition-all duration-300 hover:bg-[#222a3d] ${
+      className={`stage-card landing-card group rounded-2xl border border-outline-variant/20 bg-surface-container subtle-shadow p-8 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(144,103,198,0.08)] ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       style={{ transitionDelay: `${delay}ms`, transitionProperty: "opacity, transform", transitionDuration: "700ms" }}
@@ -126,8 +126,8 @@ function StageCard({ number, title, subtitle, description, illustration, accentC
       <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${accentClass}`}>
         <div className="w-10 h-10">{illustration}</div>
       </div>
-      <h4 className="font-display font-bold text-xl text-[#dae2fd] mb-3">{number}. {title}</h4>
-      <p className="text-sm text-[#c8c4d3] leading-relaxed">{description}</p>
+      <h4 className="font-display font-medium text-xl text-ink mb-3">{number}. {title}</h4>
+      <p className="text-sm text-ink-muted leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -138,17 +138,17 @@ const STEPS = [
   {
     number: 1, title: "Bring your material",
     description: "Notes, readings, transcripts, or source text. You own the content — socraTink extracts the structure.",
-    accentClass: "bg-[#c4c0ff]/10", delay: 0, Illustration: IsoExtraction,
+    accentClass: "bg-primary/10", delay: 0, Illustration: IsoExtraction,
   },
   {
     number: 2, title: "Get a map",
     description: "socraTink identifies what depends on what and builds a knowledge graph. You can see the full territory before you start.",
-    accentClass: "bg-[#3cddc7]/10", delay: 150, Illustration: IsoVault,
+    accentClass: "bg-primary-dim/10", delay: 150, Illustration: IsoVault,
   },
   {
     number: 3, title: "Clear rooms",
     description: "Drill one node at a time. The explanation disappears. You reconstruct from memory. The graph changes only when your answer holds up.",
-    accentClass: "bg-amber-400/10", delay: 300, Illustration: IsoreFeyn,
+    accentClass: "bg-primary/10", delay: 300, Illustration: IsoreFeyn,
   },
 ];
 
@@ -176,36 +176,21 @@ const FAQ_ITEMS = [
   },
 ];
 
-
 const ILLUSION_ITEMS = [
   { title: "You read it", detail: "Highlighted, summarized, reviewed the notes. Felt like progress." },
   { title: "You recognized it", detail: "Saw the answer on a flashcard and thought — yeah, I know that." },
   { title: "Then you tried to explain it", detail: "From memory, out loud, to someone who asked why. And the floor dropped out." },
 ];
 
-// ─── reFeyn Interactive Demo ───
-const DEFAULT_TEXT =
-  "The Frank-Starling law of the heart states that the stroke volume of the left ventricle will increase as the left ventricular volume increases due to the myocyte stretch causing a more optimal overlap of actin and myosin filaments...";
-
-const GAP_STYLES = {
-  none:          { label: "No Gap",                 cls: "bg-green-500/15 text-green-400 border-green-500/30" },
-  shallow:       { label: "Surface Understanding",  cls: "bg-yellow-500/15 text-yellow-400 border-yellow-500/30" },
-  deep:          { label: "Missing Core Mechanism", cls: "bg-orange-500/15 text-orange-400 border-orange-500/30" },
-  misconception: { label: "Misconception Detected", cls: "bg-red-500/15 text-red-400 border-red-500/30" },
-};
-
-const TRACKER_LABELS = ['Extract', 'Drill', 'Result'];
-const TRACKER_ACTIVE = { extracting: 0, drill: 1, evaluating: 1, result: 2 };
-
 function UXLoopSimulator() {
   const [phase, setPhase] = useState(1);
 
   return (
-    <div id="loop" className="w-full max-w-xl mx-auto shadow-2xl relative">
-      <div className="bg-[#131b2e] border border-[#474551]/20 rounded-2xl flex flex-col overflow-hidden relative glass-card">
+    <div id="loop" className="prototype-simulator w-full max-w-xl mx-auto subtle-shadow relative z-10">
+      <div className="prototype-simulator-frame bg-surface-container border border-outline-variant/50 rounded-2xl flex flex-col overflow-hidden relative glass-card">
         
         {/* Stepper Controls (Horizontal Tabs) */}
-        <div className="flex bg-[#0b1326]/80 border-b border-[#474551]/20 p-2 gap-1 overflow-x-auto shrink-0 z-20 relative backdrop-blur-md">
+        <div className="prototype-stepper flex bg-surface/60 border-b border-outline-variant/40 p-2 gap-1 overflow-x-auto shrink-0 z-20 relative backdrop-blur-md">
           {[
             { n: 1, title: 'Extraction' },
             { n: 2, title: 'Vault' },
@@ -215,17 +200,17 @@ function UXLoopSimulator() {
             <button 
               key={step.n}
               onClick={() => setPhase(step.n)} 
-              className={`flex-1 min-w-[70px] flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all ${
-                phase === step.n ? 'bg-[#1c2540] border border-[#3cddc7]/30 shadow-[0_0_10px_rgba(60,221,199,0.1)]' : 'border border-transparent hover:bg-[#1c2540]/60'
+              className={`prototype-step flex-1 min-w-[70px] flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all ${
+                phase === step.n ? 'bg-surface-container border border-primary/20 shadow-[0_2px_10px_rgba(144,103,198,0.08)]' : 'border border-transparent hover:bg-surface-container/50'
               }`}
             >
               <div className={`w-6 h-6 rounded-full border flex items-center justify-center font-bold text-[11px] shrink-0 transition-colors ${
-                phase === step.n ? 'bg-[#3cddc7]/10 border-[#3cddc7] text-[#3cddc7]' : 'bg-[#0b1326] border-[#474551]/40 text-[#928f9d]'
+                phase === step.n ? 'bg-primary/10 border-primary text-primary' : 'bg-surface border-outline-variant text-ink-muted'
               }`}>
                 {step.n}
               </div>
               <span className={`text-[9px] uppercase tracking-wider font-bold transition-colors ${
-                phase === step.n ? 'text-[#dae2fd]' : 'text-[#928f9d]'
+                phase === step.n ? 'text-ink' : 'text-ink-muted'
               }`}>
                 {step.title}
               </span>
@@ -234,11 +219,11 @@ function UXLoopSimulator() {
         </div>
 
         {/* Simulation Visualizer */}
-        <div className="bg-[#060e20] relative flex flex-col h-72 sm:h-80 w-full overflow-hidden shrink-0">
+        <div className="prototype-canvas bg-surface-container relative flex flex-col h-72 sm:h-80 w-full overflow-hidden shrink-0">
           
           {/* Header Data */}
-          <div className="px-5 py-3 border-b border-[#474551]/20 flex justify-between items-center bg-[#0b1326]/90 z-20 shrink-0">
-            <span id="sim-status" className="text-[10px] sm:text-[11px] font-mono text-[#3cddc7] uppercase tracking-widest truncate">
+          <div className="prototype-toolbar px-5 py-3 border-b border-outline-variant/30 flex justify-between items-center bg-surface/40 z-20 shrink-0 backdrop-blur-sm">
+            <span id="sim-status" className="text-[10px] sm:text-[11px] font-mono text-primary uppercase tracking-widest truncate font-medium">
               System: {
                 phase === 1 ? "Extracting Signal..." :
                 phase === 2 ? "Categorizing Pattern..." :
@@ -247,75 +232,75 @@ function UXLoopSimulator() {
               }
             </span>
             <div className="flex space-x-1.5 shrink-0 ml-4">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#474551]/70"></div>
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#474551]/70"></div>
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#474551]/70"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-outline-variant"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-outline-variant"></div>
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-outline-variant"></div>
             </div>
           </div>
 
           {/* Split View Area */}
-          <div className="flex-1 flex relative w-full h-full text-sm">
+          <div className="prototype-grid flex-1 flex relative w-full h-full text-sm bg-[linear-gradient(to_right,#8D86C908_1px,transparent_1px),linear-gradient(to_bottom,#8D86C908_1px,transparent_1px)] bg-[size:24px_24px]">
             
             {/* Graph / Study View Simulator (Left/Full) */}
-            <div id="sim-main-view" className={`h-full relative p-4 transition-all duration-500 ease-in-out ${phase === 3 ? 'w-1/2 sm:w-[55%] border-r border-[#474551]/20' : 'w-full'} flex items-center justify-center`}>
+            <div id="sim-main-view" className={`h-full relative p-4 transition-all duration-500 ease-in-out ${phase === 3 ? 'w-1/2 sm:w-[55%] border-r border-outline-variant/30' : 'w-full'} flex items-center justify-center`}>
               {/* Graph Simulation using DOM elements */}
               <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500`}>
                 
                 {/* Connecting Lines */}
-                <div id="line-1" className={`absolute w-20 sm:w-28 h-[2px] top-1/2 left-1/2 -mt-[1px] transform origin-left -rotate-45 transition-colors duration-500 ${phase >= 4 ? 'bg-[#3cddc7]' : 'bg-[#1c2540]'}`}></div>
-                <div id="line-2" className={`absolute w-20 sm:w-28 h-[2px] top-1/2 left-1/2 -mt-[1px] transform origin-left rotate-45 transition-colors duration-500 ${phase >= 4 ? 'bg-[#c4c0ff]' : 'bg-[#1c2540]'}`}></div>
-                <div id="line-3" className={`absolute w-16 sm:w-20 h-[2px] top-1/2 right-1/2 -mt-[1px] transform origin-right rotate-12 transition-opacity duration-500 ${phase >= 4 ? 'opacity-100 bg-[#1c2540]' : 'opacity-0'}`}></div>
+                <div id="line-1" className={`absolute w-20 sm:w-28 h-[2px] top-1/2 left-1/2 -mt-[1px] transform origin-left -rotate-45 transition-colors duration-500 ${phase >= 4 ? 'bg-primary' : 'bg-outline-variant/50'}`}></div>
+                <div id="line-2" className={`absolute w-20 sm:w-28 h-[2px] top-1/2 left-1/2 -mt-[1px] transform origin-left rotate-45 transition-colors duration-500 ${phase >= 4 ? 'bg-primary-dim' : 'bg-outline-variant/50'}`}></div>
+                <div id="line-3" className={`absolute w-16 sm:w-20 h-[2px] top-1/2 right-1/2 -mt-[1px] transform origin-right rotate-12 transition-opacity duration-500 ${phase >= 4 ? 'opacity-100 bg-outline-variant/50' : 'opacity-0'}`}></div>
 
                 {/* Nodes */}
                 {/* Center Backbone */}
-                <div id="node-center" className="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#131b2e] border border-[#3cddc7] shadow-[0_0_15px_rgba(60,221,199,0.3)] flex items-center justify-center cursor-pointer z-10 transition-transform hover:scale-105">
-                  <span className="text-white font-bold text-lg">B</span>
+                <div id="node-center" className="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-surface-container border border-primary/40 shadow-[0_4px_16px_rgba(144,103,198,0.15)] flex items-center justify-center cursor-pointer z-10 transition-transform hover:scale-105">
+                  <span className="text-ink font-bold text-lg font-display">B</span>
                 </div>
                 
                 {/* Cluster 1 (Top Right) */}
-                <div id="node-c1" className={`absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center -translate-y-16 translate-x-16 sm:-translate-y-20 sm:translate-x-20 transition-all duration-500 z-10 ${
-                  phase >= 4 ? 'bg-[#131b2e] border-[#3cddc7] shadow-[0_0_10px_rgba(60,221,199,0.5)] border-solid' : 
-                  phase >= 2 ? 'bg-[#0d1424] border-[#c4c0ff] border-dashed shadow-[0_0_10px_rgba(196,192,255,0.2)]' : 
-                  'bg-[#0d1424] border-[#474551]/60 border-dashed'
+                <div id="node-c1" className={`absolute w-8 h-8 sm:w-10 sm:h-10 rounded-2xl border flex items-center justify-center -translate-y-16 translate-x-16 sm:-translate-y-20 sm:translate-x-20 transition-all duration-500 z-10 ${
+                  phase >= 4 ? 'bg-surface-container border-primary shadow-[0_4px_12px_rgba(144,103,198,0.2)] border-solid' : 
+                  phase >= 2 ? 'bg-surface-high border-primary-dim border-dashed shadow-sm' : 
+                  'bg-surface-high border-outline-variant border-dashed'
                 }`}>
-                  {phase >= 4 ? <Check size={14} className="text-[#3cddc7]" /> : <span className={`text-[10px] sm:text-xs font-bold ${phase >= 2 ? 'text-[#c4c0ff]' : 'text-[#474551]'}`}>?</span>}
+                  {phase >= 4 ? <Check size={14} className="text-primary" /> : <span className={`text-[10px] sm:text-xs font-bold ${phase >= 2 ? 'text-primary-dim' : 'text-outline-variant'}`}>?</span>}
                 </div>
 
                 {/* Cluster 2 (Bottom Right) */}
-                <div id="node-c2" className={`absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center translate-y-16 translate-x-16 sm:translate-y-20 sm:translate-x-20 transition-all duration-500 z-10 ${
-                  phase >= 4 ? 'bg-[#131b2e] border-[#c4c0ff] shadow-[0_0_10px_rgba(196,192,255,0.3)] border-solid' : 
-                  phase >= 2 ? 'bg-[#0d1424] border-[#474551]/60 border-dashed' :
-                  'bg-[#0d1424] border-[#474551]/30 border-dashed'
+                <div id="node-c2" className={`absolute w-8 h-8 sm:w-10 sm:h-10 rounded-2xl border flex items-center justify-center translate-y-16 translate-x-16 sm:translate-y-20 sm:translate-x-20 transition-all duration-500 z-10 ${
+                  phase >= 4 ? 'bg-surface-container border-primary-dim shadow-[0_4px_12px_rgba(141,134,201,0.2)] border-solid' : 
+                  phase >= 2 ? 'bg-surface-high border-outline-variant border-dashed' :
+                  'bg-surface-high border-outline-variant/50 border-dashed'
                 }`}>
-                  {phase >= 4 ? <Check size={14} className="text-[#c4c0ff]" /> : <span className="text-[#474551] font-bold text-[10px] sm:text-xs">?</span>}
+                  {phase >= 4 ? <Check size={14} className="text-primary-dim" /> : <span className="text-outline-variant font-bold text-[10px] sm:text-xs">?</span>}
                 </div>
               </div>
 
               {/* Text Blur Simulation */}
-              <div id="sim-text-content" className={`absolute inset-0 bg-[#060e20] p-5 sm:p-6 flex flex-col justify-center pointer-events-none transition-all duration-700 z-10 ${phase >= 2 ? 'opacity-100' : 'opacity-0 z-[-1]'}`}>
-                <h3 className="text-sm sm:text-base font-bold text-[#dae2fd] mb-2 drop-shadow-md">Backbone Principle</h3>
-                <p id="blur-text" className={`text-[#c8c4d3] text-[10px] sm:text-xs leading-relaxed transition-all duration-1000 select-none ${phase >= 4 ? 'blur-none opacity-100' : 'blur-[3px] opacity-60'}`}>
+              <div id="sim-text-content" className={`absolute inset-0 bg-surface-container/90 backdrop-blur-sm p-5 sm:p-6 flex flex-col justify-center pointer-events-none transition-all duration-700 z-10 ${phase >= 2 ? 'opacity-100' : 'opacity-0 z-[-1]'}`}>
+                <h3 className="text-sm sm:text-base font-bold text-ink mb-2 font-display">Backbone Principle</h3>
+                <p id="blur-text" className={`text-ink-muted text-[10px] sm:text-xs leading-relaxed transition-all duration-1000 select-none ${phase >= 4 ? 'blur-none opacity-100' : 'blur-[4px] opacity-40'}`}>
                   Machine learning fundamentally redefines task automation by enabling systems to learn from data rather than relying on explicit programming. This paradigm shift allows for adaptation to unseen data, forming the prerequisite foundation for advanced techniques like neural networks.
                 </p>
               </div>
             </div>
 
             {/* Chat Sidebar Simulator (Right) */}
-            <div id="sim-chat-view" className={`bg-[#0b1326] border-l border-[#474551]/20 overflow-hidden transition-all duration-500 ease-in-out flex flex-col absolute right-0 top-0 bottom-0 ${phase === 3 ? 'w-1/2 sm:w-[45%] opacity-100' : 'w-0 opacity-0'}`}>
-              <div className="p-2 sm:p-3 border-b border-[#474551]/20 bg-[#131b2e] shrink-0">
-                <span className="text-[10px] sm:text-[11px] font-bold text-[#c8c4d3] flex items-center truncate">
-                  <span className="w-2 h-2 rounded-full bg-[#c4c0ff] mr-2 shrink-0"></span> Socratic AI
+            <div id="sim-chat-view" className={`bg-surface-high border-l border-outline-variant/30 overflow-hidden transition-all duration-500 ease-in-out flex flex-col absolute right-0 top-0 bottom-0 ${phase === 3 ? 'w-1/2 sm:w-[45%] opacity-100' : 'w-0 opacity-0'}`}>
+              <div className="p-2 sm:p-3 border-b border-outline-variant/30 bg-surface-container shrink-0">
+                <span className="text-[10px] sm:text-[11px] font-semibold text-ink-muted flex items-center truncate">
+                  <span className="w-2 h-2 rounded-full bg-primary mr-2 shrink-0"></span> Socratic AI
                 </span>
               </div>
-              <div className="flex-1 p-3 flex flex-col justify-end space-y-2.5 overflow-y-auto">
-                <div id="chat-msg-1" className={`bg-[#1c2540] p-2.5 rounded-xl rounded-tl-sm text-[10px] sm:text-[11px] leading-relaxed text-[#dae2fd] self-start max-w-[95%] transition-all duration-500 ${phase >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+              <div className="flex-1 p-3 flex flex-col justify-end space-y-3 overflow-y-auto">
+                <div id="chat-msg-1" className={`bg-surface-container border border-outline-variant/40 shadow-sm p-3 rounded-2xl rounded-tl-sm text-[10px] sm:text-[11px] leading-relaxed text-ink self-start max-w-[95%] transition-all duration-500 ${phase >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
                   Explain the core thesis to me from memory. Apply it to weather prediction.
                 </div>
-                <div id="chat-msg-2" className={`bg-[#c4c0ff]/10 border border-[#c4c0ff]/20 p-2.5 rounded-xl rounded-tr-sm text-[10px] sm:text-[11px] leading-relaxed text-[#dae2fd] self-end max-w-[95%] transition-all duration-500 delay-150 ${phase >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                <div id="chat-msg-2" className={`bg-primary border border-primary p-3 rounded-2xl rounded-tr-sm text-[10px] sm:text-[11px] leading-relaxed text-white self-end max-w-[95%] transition-all duration-500 delay-150 shadow-[0_4px_10px_rgba(144,103,198,0.2)] ${phase >= 3 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
                   It's using data to predict outcomes instead of hardcoding rules. Like analyzing past weather data.
                 </div>
-                <div id="chat-msg-3" className={`bg-[#1c2540] border border-[#3cddc7]/50 shadow-[0_0_10px_rgba(60,221,199,0.1)] p-2.5 rounded-xl rounded-tl-sm text-[10px] sm:text-[11px] leading-relaxed text-[#dae2fd] self-start max-w-[95%] transition-all duration-500 delay-300 ${phase === 3 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-                  Spot on! Let's lock it in. <br/><span className="text-[#3cddc7] mt-2 block font-mono bg-[#3cddc7]/10 px-1.5 py-0.5 rounded truncate text-[9px]">[&#123;"action":"UNLOCK"&#125;]</span>
+                <div id="chat-msg-3" className={`bg-surface-container border border-tertiary/30 shadow-[0_4px_12px_rgba(77,186,138,0.1)] p-3 rounded-2xl rounded-tl-sm text-[10px] sm:text-[11px] leading-relaxed text-ink self-start max-w-[95%] transition-all duration-500 delay-300 ${phase === 3 ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                  Spot on! Let's lock it in. <br/><span className="text-tertiary mt-2 block font-mono bg-tertiary/10 px-1.5 py-0.5 rounded truncate text-[9px]">[&#123;"action":"UNLOCK"&#125;]</span>
                 </div>
               </div>
             </div>
@@ -371,54 +356,57 @@ export default function HyFeynLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b1326] text-[#dae2fd]">
+    <div className="landing-shell min-h-screen bg-surface text-ink font-body selection:bg-primary/20 selection:text-ink">
 
       {/* ─── NAV ─── */}
-      <nav className="fixed top-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-xl">
-        <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-          <div className="text-2xl font-bold tracking-tighter text-[#c4c0ff] font-display">socraTink</div>
+      <nav className="landing-nav fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 px-6">
+        <div className="flex justify-between items-center py-4 w-full max-w-7xl mx-auto">
+          <div className="text-[1.65rem] font-bold tracking-tight text-ink font-display flex items-center gap-2.5">
+            <img src="/logo.png" alt="socraTink Logo" className="w-10 h-10 object-contain rounded-md shadow-sm" />
+            socraTink
+          </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-[#dae2fd]/70 font-display font-bold text-lg tracking-tight hover:text-[#dae2fd] transition-all duration-300">How It Works</a>
-            <a href="#why-different" className="text-[#dae2fd]/70 font-display font-bold text-lg tracking-tight hover:text-[#dae2fd] transition-all duration-300">Why It's Different</a>
-            <a href="#waitlist" className="bg-gradient-to-r from-[#c4c0ff] to-[#8b86e4] text-[#221875] px-6 py-2 rounded-full font-bold active:scale-95 duration-200 button-glow">
+            <a href="#how-it-works" className="text-ink-muted font-display font-medium text-[15px] hover:text-primary transition-colors duration-300">How It Works</a>
+            <a href="#why-different" className="text-ink-muted font-display font-medium text-[15px] hover:text-primary transition-colors duration-300">Why It's Different</a>
+            <a href="#waitlist" className="btn-primary px-6 py-2.5 rounded-full font-medium text-[15px]">
               Join Waitlist
             </a>
           </div>
         </div>
-        <div className="bg-gradient-to-b from-[#171f33] to-transparent h-px w-full" />
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="relative pt-32 pb-20 px-6 hero-gradient overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <h1 className="text-5xl md:text-7xl font-display font-extrabold leading-tight tracking-tight text-[#dae2fd]">
-              See what you can <span className="text-[#c4c0ff]">actually explain.</span>
+      <section className="landing-hero relative pt-32 pb-20 px-6 hero-gradient overflow-hidden border-b border-outline-variant/20">
+        <div className="landing-hero-panel max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="landing-hero-copy space-y-8 relative z-10">
+            <h1 className="landing-hero-title text-5xl md:text-7xl font-display font-bold leading-tight tracking-tight text-ink">
+              See what you can <span className="text-primary">actually explain.</span>
             </h1>
-            <p className="text-xl text-[#c8c4d3] max-w-lg leading-relaxed">
+            <p className="landing-hero-lede text-xl text-ink-muted max-w-lg leading-relaxed font-light">
               Upload your material. socraTink turns it into a knowledge map, then asks you to rebuild one idea at a time from memory. The map only changes when understanding is real.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://learn-ops-tamagachi.vercel.app/"
+                href="https://app.socratink.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-[#c4c0ff] to-[#8b86e4] text-[#221875] px-8 py-4 rounded-full font-display font-bold text-lg text-center button-glow transition-all"
+                className="landing-demo-button px-8 py-4 rounded-full font-display font-semibold text-lg text-center button-glow"
               >
                 Try the Demo
               </a>
               <a
                 href="#how-it-works"
-                className="flex items-center gap-2 px-4 py-4 text-[#c8c4d3] hover:text-[#dae2fd] text-sm font-medium transition-colors"
+                className="landing-inline-link flex items-center gap-2 px-4 py-4 text-ink-muted hover:text-primary text-sm font-medium transition-colors"
               >
                 See how the map works
                 <ChevronRight size={16} />
               </a>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-4 bg-[#3cddc7]/10 blur-[100px] rounded-full" />
-            <div className="relative z-10">
+          <div className="landing-hero-preview relative">
+            <div className="absolute -inset-4 bg-primary/10 blur-[120px] rounded-full" />
+            <div className="absolute -inset-10 bg-surface-container/60 blur-[60px] rounded-full" />
+            <div className="relative z-10 transition-transform hover:-translate-y-2 duration-500">
               <UXLoopSimulator />
             </div>
           </div>
@@ -426,42 +414,42 @@ export default function HyFeynLanding() {
       </section>
 
       {/* ─── VALUE STRIP ─── */}
-      <section className="py-12 px-6 bg-[#0b1326] border-y border-[#474551]/15">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <p className="font-display font-bold text-lg text-[#dae2fd] mb-1">One room at a time</p>
-            <p className="text-sm text-[#c8c4d3]">Know exactly what you are working on.</p>
+      <section className="landing-value-strip py-12 px-6 bg-surface-container border-b border-outline-variant/20">
+        <div className="landing-value-strip__inner max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="landing-value-item">
+            <p className="font-display font-semibold text-lg text-ink mb-1">One room at a time</p>
+            <p className="text-sm text-ink-muted">Know exactly what you are working on.</p>
           </div>
-          <div>
-            <p className="font-display font-bold text-lg text-[#dae2fd] mb-1">No fake progress</p>
-            <p className="text-sm text-[#c8c4d3]">The map updates only when you actually get it.</p>
+          <div className="landing-value-item">
+            <p className="font-display font-semibold text-lg text-ink mb-1">No fake progress</p>
+            <p className="text-sm text-ink-muted">The map updates only when you actually get it.</p>
           </div>
-          <div>
-            <p className="font-display font-bold text-lg text-[#dae2fd] mb-1">Your weak spots stay visible</p>
-            <p className="text-sm text-[#c8c4d3]">Unfinished ideas stay return-worthy, not shameful.</p>
+          <div className="landing-value-item">
+            <p className="font-display font-semibold text-lg text-ink mb-1">Your weak spots stay visible</p>
+            <p className="text-sm text-ink-muted">Unfinished ideas stay return-worthy, not shameful.</p>
           </div>
         </div>
       </section>
 
       {/* ─── PROBLEM ─── */}
-      <section ref={probRef} className="py-24 px-6 bg-[#131b2e]">
+      <section ref={probRef} className="py-24 px-6 bg-surface-high">
         <div className="max-w-3xl mx-auto">
           <div className={`transition-all duration-700 ${probVis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="font-display text-3xl md:text-4xl font-extrabold mb-6 text-[#dae2fd] text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-ink text-center tracking-tight">
               Most study tools reward exposure.
             </h2>
-            <p className="text-lg text-[#c8c4d3] text-center mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-ink-muted text-center mb-12 max-w-2xl mx-auto leading-relaxed">
               socraTink is built against that illusion.
             </p>
             <div className="space-y-6">
               {ILLUSION_ITEMS.map((item, i) => (
-                <div key={i} className="flex items-start gap-4 rounded-lg bg-[#1c2540] p-6">
-                  <div className="w-8 h-8 rounded-full bg-[#c4c0ff]/10 border border-[#c4c0ff]/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="text-[#c4c0ff] font-bold text-sm">{i + 1}</span>
+                <div key={i} className="illusion-card landing-card flex items-start gap-5 rounded-2xl bg-surface-container border border-outline-variant/30 p-6 subtle-shadow hover:shadow-[0_8px_30px_rgba(144,103,198,0.06)] transition-shadow">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-primary font-bold text-sm">{i + 1}</span>
                   </div>
                   <div>
-                    <p className="font-bold text-[#dae2fd]">{item.title}</p>
-                    <p className="text-sm text-[#c8c4d3] mt-1">{item.detail}</p>
+                    <p className="font-semibold text-ink text-[17px] mb-1 font-display">{item.title}</p>
+                    <p className="text-[15px] text-ink-muted">{item.detail}</p>
                   </div>
                 </div>
               ))}
@@ -471,19 +459,20 @@ export default function HyFeynLanding() {
       </section>
 
       {/* ─── HOW IT WORKS ─── */}
-      <section id="how-it-works" ref={pipeRef} className="py-24 px-6">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-display font-extrabold mb-4 text-[#dae2fd]">How It Works</h2>
-          <p className="text-[#c8c4d3] max-w-2xl mx-auto">
+      <section id="how-it-works" ref={pipeRef} className="py-24 px-6 bg-surface relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-outline-variant/50 to-transparent"></div>
+        <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
+          <h2 className="text-4xl font-display font-bold mb-4 text-ink tracking-tight">How It Works</h2>
+          <p className="text-ink-muted max-w-2xl mx-auto text-lg font-light">
             Three steps. Your material, your map, your understanding — verified.
           </p>
         </div>
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           {STEPS.map(({ Illustration, ...step }) => (
             <StageCard
               key={step.number}
               {...step}
-              illustration={<Illustration accent={step.number === 1 ? "#c4c0ff" : step.number === 2 ? "#3cddc7" : "#fbbf24"} />}
+              illustration={<Illustration accent="#9067C6" />}
               visible={pipeVis}
             />
           ))}
@@ -491,46 +480,48 @@ export default function HyFeynLanding() {
       </section>
 
       {/* ─── PRODUCT PREVIEW ─── */}
-      <section ref={previewRef} className="py-24 px-6 bg-[#131b2e]">
-        <div className="max-w-5xl mx-auto">
+      <section ref={previewRef} className="landing-preview-section py-24 px-6 bg-surface-container border-y border-outline-variant/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-surface/10 pointer-events-none"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="max-w-5xl mx-auto relative z-10">
           <div className={`text-center mb-12 transition-all duration-700 ${previewVis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <p className="text-xs font-semibold text-[#3cddc7] tracking-widest uppercase mb-3">Live prototype</p>
-            <h2 className="text-3xl md:text-4xl font-display font-extrabold text-[#dae2fd] mb-4">
+            <p className="text-xs font-semibold text-primary-dim tracking-widest uppercase mb-3">Live prototype</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-ink mb-4 tracking-tight">
               The map is real. Try it.
             </h2>
-            <p className="text-[#c8c4d3] max-w-xl mx-auto">
+            <p className="text-ink-muted max-w-xl mx-auto text-lg font-light">
               This is the working prototype — not a mockup. Upload material, drill a node, and see the graph respond to what you actually understand.
             </p>
           </div>
 
           {/* Browser frame */}
           <div className={`transition-all duration-700 delay-200 ${previewVis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <div className="rounded-lg overflow-hidden border border-[#474551]/30 shadow-2xl">
+            <div className="preview-window landing-card rounded-2xl overflow-hidden border border-outline-variant/50 shadow-[0_20px_60px_rgba(36,32,56,0.08)] bg-surface-high">
               {/* Browser chrome */}
-              <div className="bg-[#1c2540] px-4 py-3 flex items-center gap-3">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/60" />
+              <div className="preview-window__chrome bg-surface-container px-5 py-3.5 flex items-center gap-4 border-b border-outline-variant/40 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#E05C6B]/80" />
+                  <div className="w-3 h-3 rounded-full bg-[#F5A623]/80" />
+                  <div className="w-3 h-3 rounded-full bg-tertiary/80" />
                 </div>
-                <div className="flex-1 bg-[#171f33] rounded px-3 py-1 text-xs text-[#928f9d] font-mono truncate">
-                  learn-ops-tamagachi.vercel.app/
+                <div className="preview-window__address flex-1 bg-surface/50 rounded-md xl:rounded-lg px-4 py-1.5 text-xs text-ink-muted font-mono truncate text-center mx-auto max-w-lg border border-outline-variant/30">
+                  app.socratink.ai/
                 </div>
                 <a
-                  href="https://learn-ops-tamagachi.vercel.app/"
+                  href="https://app.socratink.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-[#3cddc7] hover:text-[#dae2fd] transition-colors whitespace-nowrap flex items-center gap-1"
+                  className="preview-window__link text-xs text-primary hover:text-ink transition-colors whitespace-nowrap flex items-center gap-1.5 font-medium"
                 >
                   Open full screen
-                  <ArrowRight size={12} />
+                  <ArrowRight size={14} />
                 </a>
               </div>
               {/* iframe — only mounts once section enters viewport */}
-              <div ref={iframeRef} style={{ height: "600px" }}>
+              <div ref={iframeRef} style={{ height: "600px" }} className="preview-window__viewport bg-surface-container rounded-b-2xl overflow-hidden">
                 {iframeVis && (
                   <iframe
-                    src="https://learn-ops-tamagachi.vercel.app/"
+                    src="https://app.socratink.ai/"
                     title="socraTink Prototype"
                     className="w-full h-full border-0"
                   />
@@ -539,72 +530,73 @@ export default function HyFeynLanding() {
             </div>
           </div>
 
-          <div className={`text-center mt-8 transition-all duration-700 delay-300 ${previewVis ? "opacity-100" : "opacity-0"}`}>
+          <div className={`text-center mt-10 transition-all duration-700 delay-300 ${previewVis ? "opacity-100" : "opacity-0"}`}>
             <a
-              href="https://learn-ops-tamagachi.vercel.app/"
+              href="https://app.socratink.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-[#c8c4d3] hover:text-[#3cddc7] transition-colors"
+              className="preview-inline-cta inline-flex items-center gap-2 text-sm text-ink-muted font-medium hover:text-primary transition-colors bg-surface px-5 py-2.5 rounded-full border border-outline-variant/40"
             >
               Open in a new tab for the full experience
-              <ArrowRight size={14} />
+              <ArrowRight size={16} />
             </a>
           </div>
         </div>
       </section>
 
       {/* ─── WHY IT FEELS DIFFERENT ─── */}
-      <section id="why-different" className="py-24 px-6">
+      <section id="why-different" className="py-24 px-6 bg-surface-high">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
-            <p className="text-sm text-[#928f9d] tracking-widest uppercase mb-3">Not another AI summary app. Not a prettier flashcard deck. Not a note graph.</p>
-            <h2 className="text-3xl md:text-4xl font-display font-extrabold text-[#dae2fd]">Why It Feels Different</h2>
+            <p className="text-xs font-semibold text-primary-dim tracking-widest uppercase mb-3">Not another AI summary app. Not a prettier flashcard deck. Not a note graph.</p>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-ink tracking-tight">Why It Feels Different</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="rounded-lg bg-[#131b2e] border border-[#474551]/10 p-8">
-              <div className="w-10 h-10 rounded-xl bg-[#3cddc7]/10 flex items-center justify-center mb-4">
-                <Shield size={20} className="text-[#3cddc7]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+            <div className="feature-card landing-card rounded-2xl bg-surface-container border border-outline-variant/30 p-8 subtle-shadow hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 border border-primary/20">
+                <Shield size={22} className="text-primary" />
               </div>
-              <h3 className="font-display font-bold text-lg text-[#dae2fd] mb-2">The graph tells the truth</h3>
-              <p className="text-sm text-[#c8c4d3] leading-relaxed">It is not a browser. It is not a checklist. It is a record of verified understanding.</p>
+              <h3 className="font-display font-semibold text-xl text-ink mb-2">The graph tells the truth</h3>
+              <p className="text-[15px] text-ink-muted leading-relaxed">It is not a browser. It is not a checklist. It is a record of verified understanding.</p>
             </div>
-            <div className="rounded-lg bg-[#131b2e] border border-[#474551]/10 p-8">
-              <div className="w-10 h-10 rounded-xl bg-[#c4c0ff]/10 flex items-center justify-center mb-4">
-                <Brain size={20} className="text-[#c4c0ff]" />
+            <div className="feature-card landing-card rounded-2xl bg-surface-container border border-outline-variant/30 p-8 subtle-shadow hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary-dim/10 flex items-center justify-center mb-5 border border-primary-dim/20">
+                <Brain size={22} className="text-primary-dim" />
               </div>
-              <h3 className="font-display font-bold text-lg text-[#dae2fd] mb-2">Drill protects recall</h3>
-              <p className="text-sm text-[#c8c4d3] leading-relaxed">When it is time to answer, explanation disappears. You generate first.</p>
+              <h3 className="font-display font-semibold text-xl text-ink mb-2">Drill protects recall</h3>
+              <p className="text-[15px] text-ink-muted leading-relaxed">When it is time to answer, explanation disappears. You generate first.</p>
             </div>
-            <div className="rounded-lg bg-[#131b2e] border border-[#474551]/10 p-8">
-              <div className="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center mb-4">
-                <Lock size={20} className="text-amber-400" />
+            <div className="feature-card landing-card rounded-2xl bg-surface-container border border-outline-variant/30 p-8 subtle-shadow hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center mb-5 border border-tertiary/20">
+                <Lock size={22} className="text-tertiary" />
               </div>
-              <h3 className="font-display font-bold text-lg text-[#dae2fd] mb-2">Progression is earned</h3>
-              <p className="text-sm text-[#c8c4d3] leading-relaxed">New territory opens when prerequisite ideas are actually solid. No shortcuts.</p>
+              <h3 className="font-display font-semibold text-xl text-ink mb-2">Progression is earned</h3>
+              <p className="text-[15px] text-ink-muted leading-relaxed">New territory opens when prerequisite ideas are actually solid. No shortcuts.</p>
             </div>
-            <div className="rounded-lg bg-[#131b2e] border border-[#474551]/10 p-8">
-              <div className="w-10 h-10 rounded-xl bg-violet-400/10 flex items-center justify-center mb-4">
-                <Activity size={20} className="text-violet-400" />
+            <div className="feature-card landing-card rounded-2xl bg-surface-container border border-outline-variant/30 p-8 subtle-shadow hover:-translate-y-1 transition-transform duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 border border-primary/20">
+                <Activity size={22} className="text-primary" />
               </div>
-              <h3 className="font-display font-bold text-lg text-[#dae2fd] mb-2">Weak spots are useful</h3>
-              <p className="text-sm text-[#c8c4d3] leading-relaxed">"Not solid yet" is not failure. It is the next place to grow.</p>
+              <h3 className="font-display font-semibold text-xl text-ink mb-2">Weak spots are useful</h3>
+              <p className="text-[15px] text-ink-muted leading-relaxed">"Not solid yet" is not failure. It is the next place to grow.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── EARLY ADOPTERS ─── */}
-      <section ref={testRef} className="py-20 px-6 bg-[#060e20]">
-        <div className="max-w-2xl mx-auto text-center">
+      <section ref={testRef} className="py-24 px-6 bg-surface-container border-y border-outline-variant/20 overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-[40%] h-full bg-primary/5 blur-[100px] pointer-events-none rounded-full"></div>
+        <div className="max-w-2xl mx-auto text-center relative z-10">
           <div className={`transition-all duration-700 ${testVis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <div className="w-12 h-12 rounded-xl bg-[#3cddc7]/10 border border-[#3cddc7]/20 flex items-center justify-center mx-auto mb-6">
-              <Sparkles size={22} className="text-[#3cddc7]" />
+            <div className="w-14 h-14 rounded-2xl bg-surface border border-outline-variant/50 flex items-center justify-center mx-auto mb-6 subtle-shadow">
+              <Sparkles size={24} className="text-primary" />
             </div>
-            <h2 className="text-2xl font-display font-extrabold mb-4 text-[#dae2fd]">Still testing. Still learning.</h2>
-            <p className="text-[#c8c4d3] leading-relaxed mb-2">
+            <h2 className="text-3xl font-display font-bold mb-4 text-ink tracking-tight">Still testing. Still learning.</h2>
+            <p className="text-ink-muted leading-relaxed mb-4 text-lg font-light">
               socraTink is in active development. The map is being built the same way we ask you to build yours — one verified step at a time.
             </p>
-            <p className="text-[#c8c4d3] leading-relaxed">
+            <p className="text-ink-muted leading-relaxed font-medium">
               To our early adopters: thank you. Your feedback is shaping every decision.
             </p>
           </div>
@@ -612,13 +604,13 @@ export default function HyFeynLanding() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-24 px-6 bg-[#131b2e]">
+      <section className="py-24 px-6 bg-surface-high">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-xs font-semibold text-[#928f9d] tracking-widest uppercase mb-3">FAQ</p>
-            <h2 className="font-display font-bold text-2xl text-[#dae2fd]">Questions before you ask</h2>
+          <div className="text-center mb-12">
+            <p className="text-xs font-semibold text-primary-dim tracking-widest uppercase mb-3">FAQ</p>
+            <h2 className="font-display font-bold text-3xl text-ink tracking-tight">Questions before you ask</h2>
           </div>
-          <div>
+          <div className="faq-shell landing-card bg-surface-container rounded-2xl p-6 border border-outline-variant/30 shadow-sm">
             {FAQ_ITEMS.map((item) => (
               <FAQItem key={item.question} {...item} />
             ))}
@@ -627,80 +619,160 @@ export default function HyFeynLanding() {
       </section>
 
       {/* ─── WAITLIST ─── */}
-      <section id="waitlist" className="py-24 px-6 relative">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-[#222a3d] rounded-lg p-12 relative z-10">
+      <section id="waitlist" className="py-32 px-6 relative bg-surface border-t border-outline-variant/30 overflow-hidden">
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="waitlist-card landing-card bg-surface-container rounded-3xl p-10 md:p-14 border border-outline-variant/40 shadow-[0_24px_80px_rgba(144,103,198,0.12)]">
             {submitted ? (
               <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full bg-[#3cddc7]/20 border border-[#3cddc7]/40 flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle2 size={32} className="text-[#3cddc7]" />
+                <div className="w-20 h-20 rounded-full bg-tertiary/10 border border-tertiary/30 flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 size={40} className="text-tertiary" />
                 </div>
-                <h3 className="text-2xl font-display font-bold text-[#dae2fd] mb-2">You're on the list!</h3>
-                <p className="text-[#c8c4d3] text-sm leading-relaxed max-w-sm mx-auto">
-                  We'll notify <strong className="text-[#dae2fd]">{email}</strong> the moment socraTink is ready for you.
+                <h3 className="text-3xl font-display font-bold text-ink mb-3">You're on the list!</h3>
+                <p className="text-ink-muted text-lg leading-relaxed max-w-sm mx-auto">
+                  We'll notify <strong className="text-primary font-medium">{email}</strong> the moment socraTink is ready for you.
                 </p>
               </div>
             ) : (
               <>
                 <div className="text-center mb-10">
-                  <h2 className="text-3xl font-display font-extrabold mb-4 text-[#dae2fd]">Build a map you can trust.</h2>
-                  <p className="text-[#c8c4d3]">Join the waitlist. No spam — just signal when socraTink is ready.</p>
+                  <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-ink tracking-tight">Build a map you can trust.</h2>
+                  <p className="text-ink-muted text-lg font-light">Join the waitlist. No spam — just signal when socraTink is ready.</p>
                 </div>
-                <form onSubmit={handleWaitlist} className="space-y-6">
+                <form onSubmit={handleWaitlist} className="space-y-6 max-w-lg mx-auto">
                   {formError && (
-                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
-                      <AlertCircle size={14} /> {formError}
+                    <div className="p-4 rounded-xl bg-[#E05C6B]/10 border border-[#E05C6B]/20 text-[#E05C6B] text-sm flex items-center gap-2">
+                      <AlertCircle size={16} /> {formError}
                     </div>
                   )}
                   <div>
-                    <label className="block text-xs uppercase tracking-widest text-[#c8c4d3] mb-2">First Name</label>
+                    <label className="block text-xs uppercase tracking-widest text-ink-muted mb-2 font-medium">First Name</label>
                     <input
                       type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}
-                      placeholder="John" required
-                      className="w-full bg-[#060e20] border-none rounded focus:ring-2 focus:ring-[#3cddc7]/40 text-[#dae2fd] p-4 outline-none"
+                      placeholder="Jane" required
+                      className="waitlist-input w-full bg-surface-high border border-outline-variant/50 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 text-ink p-4 outline-none transition-all"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs uppercase tracking-widest text-[#c8c4d3] mb-2">Email Address</label>
+                    <label className="block text-xs uppercase tracking-widest text-ink-muted mb-2 font-medium">Email Address</label>
                     <input
                       type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                      placeholder="john@example.com" required
-                      className="w-full bg-[#060e20] border-none rounded focus:ring-2 focus:ring-[#3cddc7]/40 text-[#dae2fd] p-4 outline-none"
+                      placeholder="jane@example.com" required
+                      className="waitlist-input w-full bg-surface-high border border-outline-variant/50 rounded-xl focus:border-primary focus:ring-4 focus:ring-primary/10 text-ink p-4 outline-none transition-all"
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={!canSubmit || loading}
-                    className="w-full bg-gradient-to-r from-[#3cddc7] to-[#00a392] text-[#00201c] py-5 rounded-full font-display font-bold text-xl button-glow transition-all mt-4 disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="w-full btn-primary py-4 mt-2 rounded-xl font-display font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? "Sending..." : "Join the Waitlist"}
                   </button>
-                  <p className="text-center text-xs text-[#c8c4d3]/60 flex items-center justify-center gap-2">
-                    <Lock size={12} />
+                  <p className="text-center text-sm text-ink-muted/80 flex items-center justify-center gap-2 mt-4 font-medium">
+                    <Lock size={14} />
                     No spam. Unsubscribe any time.
                   </p>
                 </form>
               </>
             )}
           </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#c4c0ff]/10 blur-[120px] rounded-full -z-0" />
         </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="w-full border-t border-[#dae2fd]/10 bg-[#0b1326]">
-        <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8 w-full max-w-7xl mx-auto">
-          <div className="flex flex-col gap-2">
-            <div className="font-display font-bold text-[#c4c0ff] text-xl">socraTink</div>
-            <p className="text-sm tracking-wide text-[#dae2fd]/50">© 2026 socraTink. A truthful map of what you can actually explain.</p>
+      <footer className="landing-footer w-full border-t border-outline-variant/40 bg-surface-container">
+        <div className="flex flex-col md:flex-row justify-between items-center px-12 py-12 gap-8 w-full max-w-7xl mx-auto">
+          <div className="flex flex-col gap-2 md:items-start items-center">
+            <div className="font-display font-bold text-primary text-xl flex items-center gap-2">
+              <img src="/logo.png" alt="socraTink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
+              socraTink
+            </div>
+            <p className="text-sm tracking-wide text-ink-muted">© 2026 socraTink. A truthful map of what you can actually explain.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-8">
-            <a href="#" className="text-sm tracking-wide text-[#dae2fd]/50 hover:text-[#c4c0ff] underline decoration-[#3cddc7]/30 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm tracking-wide text-[#dae2fd]/50 hover:text-[#c4c0ff] underline decoration-[#3cddc7]/30 transition-colors">Terms of Service</a>
+            <a href="#" className="text-sm font-medium text-ink-muted hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all duration-300">Privacy Policy</a>
+            <a href="#" className="text-sm font-medium text-ink-muted hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all duration-300">Terms of Service</a>
           </div>
         </div>
       </footer>
 
+      <ThemeToggle />
     </div>
+  );
+}
+
+// ─── ThemeToggle Component ───
+function ThemeToggle() {
+  const THEME_STORAGE_KEY = 'learnops-theme';
+  const [themePreference, setThemePreference] = useState('light');
+
+  const updateThemeToggleUi = (resolvedTheme) => {
+    setThemePreference(resolvedTheme);
+  };
+
+  const applyThemePreference = (nextPreference, persist = true) => {
+    const resolvedTheme = nextPreference === 'dark' ? 'dark' : 'light';
+    document.body.classList.toggle('night', resolvedTheme === 'dark');
+    document.body.dataset.theme = resolvedTheme;
+    document.documentElement.dataset.theme = resolvedTheme;
+    updateThemeToggleUi(resolvedTheme);
+    if (persist) {
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, resolvedTheme);
+      } catch (err) {}
+    }
+  };
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(THEME_STORAGE_KEY);
+      applyThemePreference(stored === 'dark' ? 'dark' : 'light', false);
+    } catch (err) {
+      console.warn('Theme preference unavailable.', err);
+      applyThemePreference('light', false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    applyThemePreference(themePreference === 'dark' ? 'light' : 'dark');
+  };
+
+  const isDark = themePreference === 'dark';
+  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+
+  return (
+    <button 
+      className="theme-toggle" 
+      onClick={toggleTheme}
+      data-theme={themePreference}
+      aria-label={label}
+      aria-pressed={String(isDark)}
+      title={label}
+      type="button"
+    >
+      <span className="theme-toggle-icon theme-toggle-icon-sun" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="4.5"></circle>
+          <path d="M12 2.5v3"></path>
+          <path d="M12 18.5v3"></path>
+          <path d="M4.9 4.9l2.1 2.1"></path>
+          <path d="M17 17l2.1 2.1"></path>
+          <path d="M2.5 12h3"></path>
+          <path d="M18.5 12h3"></path>
+          <path d="M4.9 19.1L7 17"></path>
+          <path d="M17 7l2.1-2.1"></path>
+        </svg>
+      </span>
+      <span className="theme-toggle-track" aria-hidden="true">
+        <span className="theme-toggle-thumb"></span>
+      </span>
+      <span className="theme-toggle-icon theme-toggle-icon-moon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20.5 15.2A8.8 8.8 0 1 1 12.8 3.5a7.2 7.2 0 0 0 7.7 11.7z"></path>
+          <path d="M18 5.2v2.1"></path>
+          <path d="M16.95 6.25h2.1"></path>
+        </svg>
+      </span>
+    </button>
   );
 }

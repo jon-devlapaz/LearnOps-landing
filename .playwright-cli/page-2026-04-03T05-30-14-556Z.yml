@@ -1,0 +1,213 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - img "socraTink Logo" [ref=e7]
+        - text: socraTink
+      - generic [ref=e8]:
+        - link "How It Works" [ref=e9] [cursor=pointer]:
+          - /url: "#how-it-works"
+        - link "Why It's Different" [ref=e10] [cursor=pointer]:
+          - /url: "#why-different"
+        - link "Join Waitlist" [ref=e11] [cursor=pointer]:
+          - /url: "#waitlist"
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - heading "See what you can actually explain." [level=1] [ref=e15]
+      - paragraph [ref=e16]: Upload your material. socraTink turns it into a knowledge map, then asks you to rebuild one idea at a time from memory. The map only changes when understanding is real.
+      - generic [ref=e17]:
+        - link "Try the Demo" [ref=e18] [cursor=pointer]:
+          - /url: https://app.socratink.ai/
+        - link "See how the map works" [ref=e19] [cursor=pointer]:
+          - /url: "#how-it-works"
+          - text: See how the map works
+          - img [ref=e20]
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - button "1 Extraction" [ref=e29]:
+          - generic [ref=e30]: "1"
+          - generic [ref=e31]: Extraction
+        - button "2 Vault" [ref=e32]:
+          - generic [ref=e33]: "2"
+          - generic [ref=e34]: Vault
+        - button "3 reTink" [ref=e35]:
+          - generic [ref=e36]: "3"
+          - generic [ref=e37]: reTink
+        - button "4 Scaffolding" [ref=e38]:
+          - generic [ref=e39]: "4"
+          - generic [ref=e40]: Scaffolding
+      - generic [ref=e41]:
+        - generic [ref=e43]: "System: Extracting Signal..."
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - generic [ref=e55] [cursor=pointer]: B
+              - generic [ref=e57]: "?"
+              - generic [ref=e59]: "?"
+            - generic:
+              - heading "Backbone Principle" [level=3]
+              - paragraph: Machine learning fundamentally redefines task automation by enabling systems to learn from data rather than relying on explicit programming. This paradigm shift allows for adaptation to unseen data, forming the prerequisite foundation for advanced techniques like neural networks.
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - generic: Socratic AI
+            - generic [ref=e63]:
+              - generic [ref=e64]: Explain the core thesis to me from memory. Apply it to weather prediction.
+              - generic [ref=e65]: It's using data to predict outcomes instead of hardcoding rules. Like analyzing past weather data.
+              - generic [ref=e66]:
+                - text: Spot on! Let's lock it in.
+                - generic [ref=e67]: "[{\"action\":\"UNLOCK\"}]"
+  - generic [ref=e69]:
+    - generic [ref=e70]:
+      - paragraph [ref=e71]: One room at a time
+      - paragraph [ref=e72]: Know exactly what you are working on.
+    - generic [ref=e73]:
+      - paragraph [ref=e74]: No fake progress
+      - paragraph [ref=e75]: The map updates only when you actually get it.
+    - generic [ref=e76]:
+      - paragraph [ref=e77]: Your weak spots stay visible
+      - paragraph [ref=e78]: Unfinished ideas stay return-worthy, not shameful.
+  - generic [ref=e81]:
+    - heading "Most study tools reward exposure." [level=2] [ref=e82]
+    - paragraph [ref=e83]: socraTink is built against that illusion.
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e87]: "1"
+        - generic [ref=e88]:
+          - paragraph [ref=e89]: You read it
+          - paragraph [ref=e90]: Highlighted, summarized, reviewed the notes. Felt like progress.
+      - generic [ref=e91]:
+        - generic [ref=e93]: "2"
+        - generic [ref=e94]:
+          - paragraph [ref=e95]: You recognized it
+          - paragraph [ref=e96]: Saw the answer on a flashcard and thought — yeah, I know that.
+      - generic [ref=e97]:
+        - generic [ref=e99]: "3"
+        - generic [ref=e100]:
+          - paragraph [ref=e101]: Then you tried to explain it
+          - paragraph [ref=e102]: From memory, out loud, to someone who asked why. And the floor dropped out.
+  - generic [ref=e103]:
+    - generic [ref=e105]:
+      - heading "How It Works" [level=2] [ref=e106]
+      - paragraph [ref=e107]: Three steps. Your material, your map, your understanding — verified.
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - img [ref=e112]:
+          - generic [ref=e123]: WHY
+          - generic [ref=e124]: HOW
+          - generic [ref=e125]: →
+        - heading "1. Bring your material" [level=4] [ref=e126]
+        - paragraph [ref=e127]: Notes, readings, transcripts, or source text. You own the content — socraTink extracts the structure.
+      - generic [ref=e128]:
+        - img [ref=e131]:
+          - generic [ref=e139]: §
+        - heading "2. Get a map" [level=4] [ref=e140]
+        - paragraph [ref=e141]: socraTink identifies what depends on what and builds a knowledge graph. You can see the full territory before you start.
+      - generic [ref=e142]:
+        - img [ref=e145]:
+          - generic [ref=e149]: "?"
+          - generic [ref=e150]: "?"
+          - generic [ref=e153]: S
+          - generic [ref=e155]: D
+        - heading "3. Clear rooms" [level=4] [ref=e156]
+        - paragraph [ref=e157]: Drill one node at a time. The explanation disappears. You reconstruct from memory. The graph changes only when your answer holds up.
+  - generic [ref=e159]:
+    - generic [ref=e160]:
+      - paragraph [ref=e161]: Live prototype
+      - heading "The map is real. Try it." [level=2] [ref=e162]
+      - paragraph [ref=e163]: This is the working prototype — not a mockup. Upload material, drill a node, and see the graph respond to what you actually understand.
+    - generic [ref=e166]:
+      - generic [ref=e171]: app.socratink.ai/
+      - link "Open full screen" [ref=e172] [cursor=pointer]:
+        - /url: https://app.socratink.ai/
+        - text: Open full screen
+        - img [ref=e173]
+    - link "Open in a new tab for the full experience" [ref=e177] [cursor=pointer]:
+      - /url: https://app.socratink.ai/
+      - text: Open in a new tab for the full experience
+      - img [ref=e178]
+  - generic [ref=e181]:
+    - generic [ref=e182]:
+      - paragraph [ref=e183]: Not another AI summary app. Not a prettier flashcard deck. Not a note graph.
+      - heading "Why It Feels Different" [level=2] [ref=e184]
+    - generic [ref=e185]:
+      - generic [ref=e186]:
+        - img [ref=e188]
+        - heading "The graph tells the truth" [level=3] [ref=e190]
+        - paragraph [ref=e191]: It is not a browser. It is not a checklist. It is a record of verified understanding.
+      - generic [ref=e192]:
+        - img [ref=e194]
+        - heading "Drill protects recall" [level=3] [ref=e202]
+        - paragraph [ref=e203]: When it is time to answer, explanation disappears. You generate first.
+      - generic [ref=e204]:
+        - img [ref=e206]
+        - heading "Progression is earned" [level=3] [ref=e209]
+        - paragraph [ref=e210]: New territory opens when prerequisite ideas are actually solid. No shortcuts.
+      - generic [ref=e211]:
+        - img [ref=e213]
+        - heading "Weak spots are useful" [level=3] [ref=e215]
+        - paragraph [ref=e216]: "\"Not solid yet\" is not failure. It is the next place to grow."
+  - generic [ref=e219]:
+    - img [ref=e221]
+    - heading "Still testing. Still learning." [level=2] [ref=e224]
+    - paragraph [ref=e225]: socraTink is in active development. The map is being built the same way we ask you to build yours — one verified step at a time.
+    - paragraph [ref=e226]: "To our early adopters: thank you. Your feedback is shaping every decision."
+  - generic [ref=e228]:
+    - generic [ref=e229]:
+      - paragraph [ref=e230]: FAQ
+      - heading "Questions before you ask" [level=2] [ref=e231]
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - button "Who is this for?" [ref=e234]:
+          - generic [ref=e235]: Who is this for?
+          - img [ref=e236]
+        - paragraph [ref=e238]: Self-directed learners who study from their own material and want more than summaries, streaks, and quiz cosmetics. If you care whether you actually understand something — not just whether you've seen it — socraTink was built for you.
+      - generic [ref=e239]:
+        - button "Is this just fancy flashcards?" [ref=e240]:
+          - generic [ref=e241]: Is this just fancy flashcards?
+          - img [ref=e242]
+        - paragraph [ref=e244]: No. Flashcards test recognition of isolated labels. socraTink asks you to reconstruct causal mechanisms from memory — how and why things work, not just what they're called. The AI adapts to where your reasoning actually breaks down, not to a fixed review interval.
+      - generic [ref=e245]:
+        - button "What subjects does it work for?" [ref=e246]:
+          - generic [ref=e247]: What subjects does it work for?
+          - img [ref=e248]
+        - paragraph [ref=e250]: Any subject with causal structure — sciences, engineering, law, economics, medicine, history. If the material has ideas that depend on other ideas, socraTink can map and drill it.
+      - generic [ref=e251]:
+        - button "How is this different from RemNote, Anki, or Recall?" [ref=e252]:
+          - generic [ref=e253]: How is this different from RemNote, Anki, or Recall?
+          - img [ref=e254]
+        - paragraph [ref=e256]: "Anki is honest recall without structure. RemNote and Recall have structure but their graphs track notes and activity, not verified understanding. socraTink sits at the intersection: your own material, a real dependency graph, and a map that only advances when you can actually explain the ideas inside it."
+      - generic [ref=e257]:
+        - button "What about learners with ADHD?" [ref=e258]:
+          - generic [ref=e259]: What about learners with ADHD?
+          - img [ref=e260]
+        - paragraph [ref=e262]: socraTink wasn't designed as an ADHD tool with a general mode — it was designed around clear targets, bounded sessions, and zero-friction re-entry. Features like automatic time-boxing, fatigue guardrails, and context restoration for returning sessions are built into the core loop. If you don't need them, they stay out of your way.
+  - generic [ref=e265]:
+    - generic [ref=e266]:
+      - heading "Build a map you can trust." [level=2] [ref=e267]
+      - paragraph [ref=e268]: Join the waitlist. No spam — just signal when socraTink is ready.
+    - generic [ref=e269]:
+      - generic [ref=e270]:
+        - generic [ref=e271]: First Name
+        - textbox "Jane" [ref=e272]
+      - generic [ref=e273]:
+        - generic [ref=e274]: Email Address
+        - textbox "jane@example.com" [ref=e275]
+      - button "Join the Waitlist" [disabled] [ref=e276]
+      - paragraph [ref=e277]:
+        - img [ref=e278]
+        - text: No spam. Unsubscribe any time.
+  - contentinfo [ref=e281]:
+    - generic [ref=e282]:
+      - generic [ref=e283]:
+        - generic [ref=e284]:
+          - img "socraTink Logo" [ref=e285]
+          - text: socraTink
+        - paragraph [ref=e286]: © 2026 socraTink. A truthful map of what you can actually explain.
+      - generic [ref=e287]:
+        - link "Privacy Policy" [ref=e288] [cursor=pointer]:
+          - /url: "#"
+        - link "Terms of Service" [ref=e289] [cursor=pointer]:
+          - /url: "#"
+  - button "Switch to dark mode" [ref=e290] [cursor=pointer]:
+    - img [ref=e292]
+    - img [ref=e301]
