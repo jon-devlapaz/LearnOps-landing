@@ -1,1 +1,0 @@
-# socraTink Landing Page

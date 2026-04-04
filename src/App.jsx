@@ -137,12 +137,12 @@ function StageCard({ number, title, description, illustration, accentClass, dela
 const STEPS = [
   {
     number: 1, title: "Bring your material",
-    description: "Notes, readings, transcripts, or source text. You own the content — socraTink extracts the structure.",
+    description: "Notes, readings, transcripts, or source text. You own the content — socratink extracts the structure.",
     accentClass: "bg-primary/10", delay: 0, Illustration: IsoExtraction,
   },
   {
     number: 2, title: "Get a map",
-    description: "socraTink identifies what depends on what and builds a knowledge graph. You can see the full territory before you start.",
+    description: "socratink identifies what depends on what and builds a knowledge graph. You can see the full territory before you start.",
     accentClass: "bg-primary-dim/10", delay: 150, Illustration: IsoVault,
   },
   {
@@ -156,23 +156,23 @@ const STEPS = [
 const FAQ_ITEMS = [
   {
     question: "Who is this for?",
-    answer: "Self-directed learners who study from their own material and want more than summaries, streaks, and quiz cosmetics. If you care whether you actually understand something — not just whether you've seen it — socraTink was built for you.",
+    answer: "Self-directed learners who study from their own material and want more than summaries, streaks, and quiz cosmetics. If you care whether you actually understand something — not just whether you've seen it — socratink was built for you.",
   },
   {
     question: "Is this just fancy flashcards?",
-    answer: "No. Flashcards test recognition of isolated labels. socraTink asks you to reconstruct causal mechanisms from memory — how and why things work, not just what they're called. The AI adapts to where your reasoning actually breaks down, not to a fixed review interval.",
+    answer: "No. Flashcards test recognition of isolated labels. socratink asks you to reconstruct causal mechanisms from memory — how and why things work, not just what they're called. The AI adapts to where your reasoning actually breaks down, not to a fixed review interval.",
   },
   {
     question: "What subjects does it work for?",
-    answer: "Any subject with causal structure — sciences, engineering, law, economics, medicine, history. If the material has ideas that depend on other ideas, socraTink can map and drill it.",
+    answer: "Any subject with causal structure — sciences, engineering, law, economics, medicine, history. If the material has ideas that depend on other ideas, socratink can map and drill it.",
   },
   {
     question: "How is this different from RemNote, Anki, or Recall?",
-    answer: "Anki is honest recall without structure. RemNote and Recall have structure but their graphs track notes and activity, not verified understanding. socraTink sits at the intersection: your own material, a real dependency graph, and a map that only advances when you can actually explain the ideas inside it.",
+    answer: "Anki is honest recall without structure. RemNote and Recall have structure but their graphs track notes and activity, not verified understanding. socratink sits at the intersection: your own material, a real dependency graph, and a map that only advances when you can actually explain the ideas inside it.",
   },
   {
     question: "What about learners with ADHD?",
-    answer: "socraTink wasn't designed as an ADHD tool with a general mode — it was designed around clear targets, bounded sessions, and zero-friction re-entry. Features like automatic time-boxing, fatigue guardrails, and context restoration for returning sessions are built into the core loop. If you don't need them, they stay out of your way.",
+    answer: "socratink wasn't designed as an ADHD tool with a general mode — it was designed around clear targets, bounded sessions, and zero-friction re-entry. Features like automatic time-boxing, fatigue guardrails, and context restoration for returning sessions are built into the core loop. If you don't need them, they stay out of your way.",
   },
 ];
 
@@ -270,7 +270,7 @@ function HeroProductVignette() {
           <div className="demo-topbar">
             <div className="demo-brand">
               <span className="demo-brand__mark" aria-hidden="true" />
-              <span>socraTink</span>
+              <span>socratink</span>
             </div>
             <div className="demo-phases" aria-hidden="true">
               {[
@@ -358,7 +358,7 @@ function HeroProductVignette() {
         </div>
       </div>
       <p className="sr-only">
-        Animated socraTink vignette showing extraction, a knowledge map resolving, node B selected for recall, a learner explanation, evaluation, and one truthful graph update.
+        Animated socratink vignette showing extraction, a knowledge map resolving, node B selected for recall, a learner explanation, evaluation, and one truthful graph update.
       </p>
     </>
   );
@@ -407,8 +407,8 @@ export default function HyFeynLanding() {
           access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
           name: firstName,
           email,
-          subject: "socraTink Waitlist Sign-up",
-          from_name: "socraTink Waitlist",
+          subject: "socratink Waitlist Sign-up",
+          from_name: "socratink Waitlist",
         }),
       });
       const result = await res.json();
@@ -428,8 +428,8 @@ export default function HyFeynLanding() {
       <nav className="landing-nav fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 px-6">
         <div className="flex justify-between items-center py-4 w-full max-w-7xl mx-auto">
           <div className="text-[1.65rem] font-bold tracking-tight text-ink font-display flex items-center gap-2.5">
-            <img src="/logo.png" alt="socraTink Logo" className="w-10 h-10 object-contain rounded-md shadow-sm" />
-            socraTink
+            <img src="/logo.png" alt="socratink Logo" className="w-10 h-10 object-contain rounded-md shadow-sm" />
+            socratink
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#how-it-works" className="text-ink-muted font-display font-medium text-[15px] hover:text-primary transition-colors duration-300">How It Works</a>
@@ -449,7 +449,7 @@ export default function HyFeynLanding() {
               See what you can <span className="text-primary">actually explain.</span>
             </h1>
             <p className="landing-hero-lede text-[1.03rem] md:text-[1.1rem] text-ink-muted max-w-[29rem] leading-relaxed font-light">
-              Upload your material. socraTink turns it into a knowledge map, then asks you to rebuild one idea at a time from memory. The map only changes when understanding is real.
+              Upload your material. socratink turns it into a knowledge map, then asks you to rebuild one idea at a time from memory. The map only changes when understanding is real.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -509,7 +509,7 @@ export default function HyFeynLanding() {
               Most study tools reward exposure.
             </h2>
             <p className="text-lg text-ink-muted text-center mb-12 max-w-2xl mx-auto leading-relaxed">
-              socraTink is built against that illusion.
+              socratink is built against that illusion.
             </p>
             <div className="space-y-6">
               {ILLUSION_ITEMS.map((item, i) => (
@@ -592,7 +592,7 @@ export default function HyFeynLanding() {
                 {iframeVis && (
                   <iframe
                     src="https://app.socratink.ai/"
-                    title="socraTink Prototype"
+                    title="socratink Prototype"
                     className="w-full h-full border-0"
                   />
                 )}
@@ -664,7 +664,7 @@ export default function HyFeynLanding() {
             </div>
             <h2 className="text-3xl font-display font-bold mb-4 text-ink tracking-tight">Still testing. Still learning.</h2>
             <p className="text-ink-muted leading-relaxed mb-4 text-lg font-light">
-              socraTink is in active development. The map is being built the same way we ask you to build yours — one verified step at a time.
+              socratink is in active development. The map is being built the same way we ask you to build yours — one verified step at a time.
             </p>
             <p className="text-ink-muted leading-relaxed font-medium">
               To our early adopters: thank you. Your feedback is shaping every decision.
@@ -699,14 +699,14 @@ export default function HyFeynLanding() {
                 </div>
                 <h3 className="text-3xl font-display font-bold text-ink mb-3">You're on the list!</h3>
                 <p className="text-ink-muted text-lg leading-relaxed max-w-sm mx-auto">
-                  We'll notify <strong className="text-primary font-medium">{email}</strong> the moment socraTink is ready for you.
+                  We'll notify <strong className="text-primary font-medium">{email}</strong> the moment socratink is ready for you.
                 </p>
               </div>
             ) : (
               <>
                 <div className="text-center mb-10">
                   <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-ink tracking-tight">Build a map you can trust.</h2>
-                  <p className="text-ink-muted text-lg font-light">Join the waitlist. No spam — just signal when socraTink is ready.</p>
+                  <p className="text-ink-muted text-lg font-light">Join the waitlist. No spam — just signal when socratink is ready.</p>
                 </div>
                 <form onSubmit={handleWaitlist} className="space-y-6 max-w-lg mx-auto">
                   {formError && (
@@ -754,10 +754,10 @@ export default function HyFeynLanding() {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-12 gap-8 w-full max-w-7xl mx-auto">
           <div className="flex flex-col gap-2 md:items-start items-center">
             <div className="font-display font-bold text-primary text-xl flex items-center gap-2">
-              <img src="/logo.png" alt="socraTink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
-              socraTink
+              <img src="/logo.png" alt="socratink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
+              socratink
             </div>
-            <p className="text-sm tracking-wide text-ink-muted">© 2026 socraTink. A truthful map of what you can actually explain.</p>
+            <p className="text-sm tracking-wide text-ink-muted">© 2026 socratink. A truthful map of what you can actually explain.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-8">
             <a href="#" className="text-sm font-medium text-ink-muted hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all duration-300">Privacy Policy</a>
