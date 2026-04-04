@@ -1,6 +1,6 @@
-# hiFeyn — Landing Page
+# socratink-landing
 
-Waitlist landing page for hiFeyn: AI-augmented study pipeline for the ADHD brain.
+Waitlist landing page for socratink: AI-augmented study pipeline for the ADHD brain.
 
 ## Stack
 
