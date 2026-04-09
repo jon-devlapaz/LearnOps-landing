@@ -417,7 +417,7 @@ export default function HyFeynLanding() {
               See what you can <span className="text-primary">actually explain.</span>
             </h1>
             <p className="landing-hero-lede text-[1.03rem] md:text-[1.1rem] text-ink-muted max-w-[29rem] leading-relaxed font-light">
-              Upload your material. socratink turns it into a knowledge map, then asks you to rebuild one idea at a time from memory. The map only changes when understanding is real.
+              Bring your own notes or transcript. Get a map. Explain one idea from memory. Tell me where the experience breaks.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -598,7 +598,7 @@ export default function HyFeynLanding() {
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-ink tracking-tight">Build a map you can test.</h2>
               <p className="text-ink-muted text-lg font-light max-w-xl mx-auto mb-8">
-                socratink is now in minimum viable testing. Enter through the app login and start using the real product.
+                Bring your own notes or transcript. Get a map. Explain one idea from memory. Tell me where the experience breaks.
               </p>
               <a
                 href={APP_LOGIN_URL}
@@ -617,17 +617,13 @@ export default function HyFeynLanding() {
 
       {/* ─── FOOTER ─── */}
       <footer className="landing-footer w-full border-t border-outline-variant/40 bg-surface-container">
-        <div className="flex flex-col md:flex-row justify-between items-center px-12 py-12 gap-8 w-full max-w-7xl mx-auto">
-          <div className="flex flex-col gap-2 md:items-start items-center">
+        <div className="flex justify-center px-12 py-12 w-full max-w-7xl mx-auto">
+          <div className="flex flex-col gap-2 items-center text-center">
             <div className="font-display font-bold text-primary text-xl flex items-center gap-2">
               <img src="/logo.png" alt="socratink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
               socratink
             </div>
             <p className="text-sm tracking-wide text-ink-muted">© 2026 socratink. A truthful map of what you can actually explain.</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            <a href="#" className="text-sm font-medium text-ink-muted hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all duration-300">Privacy Policy</a>
-            <a href="#" className="text-sm font-medium text-ink-muted hover:text-primary underline decoration-transparent hover:decoration-primary/30 transition-all duration-300">Terms of Service</a>
           </div>
         </div>
       </footer>
