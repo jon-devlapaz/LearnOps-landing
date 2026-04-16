@@ -240,6 +240,53 @@ body[data-theme="dark"] .landing-nav {
   background: linear-gradient(180deg, var(--nav-surface), rgba(31, 27, 49, 0.52));
 }
 
+.discord-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-primary);
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.discord-icon-link:hover,
+.discord-icon-link:focus-visible {
+  border-color: var(--accent-border-strong);
+  background: var(--accent-soft-strong);
+  color: var(--primary-fill);
+  box-shadow: var(--accent-ring);
+  transform: translateY(-1px);
+}
+
+.footer-discord-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.footer-discord-link:hover,
+.footer-discord-link:focus-visible {
+  color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
 body.night .landing-hero-panel,
 body[data-theme="dark"] .landing-hero-panel {
   border-color: rgba(var(--cream-50-rgb), 0.1);

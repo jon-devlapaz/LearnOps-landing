@@ -7,6 +7,22 @@ import {
 
 // ─── Constants ───
 const APP_LOGIN_URL = "https://app.socratink.ai/login";
+const DISCORD_INVITE_URL = "https://discord.gg/ZEHqpC6vMx";
+
+function DiscordIcon({ size = 20, className = "" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M19.5 5.2A17.4 17.4 0 0 0 15.2 4l-.2.4c1.5.4 2.8 1.1 3.9 2.1a12.8 12.8 0 0 0-4.7-1.5 13.8 13.8 0 0 0-4.5 0A12.8 12.8 0 0 0 5 6.5c1.1-1 2.4-1.7 3.9-2.1L8.8 4a17.4 17.4 0 0 0-4.3 1.2C1.8 9.2 1 13 1.4 16.8A17.1 17.1 0 0 0 6.7 19c.4-.6.8-1.2 1.1-1.8-.6-.2-1.2-.5-1.8-.9l.4-.3a12.4 12.4 0 0 0 11.2 0l.4.3c-.6.4-1.2.7-1.8.9.3.6.7 1.2 1.1 1.8a17.1 17.1 0 0 0 5.3-2.2c.5-4.4-.8-8.1-3.1-11.6ZM8.6 14.6c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.8 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z" />
+    </svg>
+  );
+}
 
 // ─── Animation Hook ───
 function useInView(threshold = 0.15) {
@@ -398,6 +414,15 @@ export default function HyFeynLanding() {
             <a href="#how-it-works" className="text-ink-muted font-display font-medium text-[15px] hover:text-primary transition-colors duration-300">How It Works</a>
             <a href="#why-different" className="text-ink-muted font-display font-medium text-[15px] hover:text-primary transition-colors duration-300">Why It's Different</a>
             <a
+              href={DISCORD_INVITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Join the socratink Discord"
+              className="discord-icon-link"
+            >
+              <DiscordIcon size={21} />
+            </a>
+            <a
               href={APP_LOGIN_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -419,7 +444,7 @@ export default function HyFeynLanding() {
             <p className="landing-hero-lede text-[1.03rem] md:text-[1.1rem] text-ink-muted max-w-[29rem] leading-relaxed font-light">
               Bring your own notes or transcript. Get a map. Explain one idea from memory. Tell me where the experience breaks.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
               <a
                 href={APP_LOGIN_URL}
                 target="_blank"
@@ -427,6 +452,15 @@ export default function HyFeynLanding() {
                 className="landing-demo-button px-7 py-3.5 rounded-full font-display font-semibold text-[0.98rem] text-center button-glow"
               >
                 tink it
+              </a>
+              <a
+                href={DISCORD_INVITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="landing-inline-link flex items-center gap-2 px-4 py-4 text-ink-muted hover:text-primary text-sm font-medium transition-colors"
+              >
+                <DiscordIcon size={18} />
+                Join Discord
               </a>
               <a
                 href="#how-it-works"
@@ -623,6 +657,15 @@ export default function HyFeynLanding() {
               <img src="/logo.png" alt="socratink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
               socratink
             </div>
+            <a
+              href={DISCORD_INVITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-discord-link"
+            >
+              <DiscordIcon size={17} />
+              Join the Discord
+            </a>
             <p className="text-sm tracking-wide text-ink-muted">© 2026 socratink. A truthful map of what you can actually explain.</p>
           </div>
         </div>
