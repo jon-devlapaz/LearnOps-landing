@@ -407,7 +407,10 @@ export default function HyFeynLanding() {
       {/* ─── NAV ─── */}
       <nav className="landing-nav fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 px-6">
         <div className="flex justify-between items-center py-4 w-full max-w-7xl mx-auto">
-          <div className="text-[1.65rem] font-bold tracking-tight text-ink font-display flex items-center gap-2.5">
+          <div
+            className="text-[1.65rem] font-bold tracking-tight text-ink font-display flex items-center gap-2.5"
+            title="socratink — sō·krə·tink (Socrates + think + ink)"
+          >
             <img src="/logo.png" alt="socratink Logo" className="w-10 h-10 object-contain rounded-md shadow-sm" />
             socratink
           </div>
@@ -614,13 +617,13 @@ export default function HyFeynLanding() {
             <h2 className="text-3xl font-display font-bold mb-6 text-ink tracking-tight text-center">Still testing. Still learning.</h2>
             <div className="space-y-4 text-ink-muted leading-relaxed text-lg font-light">
               <p>
-                socratink started because I kept fooling myself — highlighter-sure one minute, floored the next when someone asked why.
+                socratink started because I kept fooling myself. Highlighter sure one minute, floored the next when someone asked why. I wanted a system that refused to let me hide.
               </p>
               <p>
-                I wanted a system that refused to let me hide. What&rsquo;s here today is the first honest version of that. It&rsquo;s rough in places. The map you drill tomorrow will be sharper than today&rsquo;s — because you tested today&rsquo;s.
+                What&rsquo;s here today is the first honest version of that. It&rsquo;s rough in places. The map you drill tomorrow will be sharper than today&rsquo;s because you tested today&rsquo;s.
               </p>
               <p>
-                If you&rsquo;re here early, you&rsquo;re not just a user. You&rsquo;re a co-builder. Every session you run and every place the map feels wrong shapes what ships next. Tell me when it breaks.
+                If you&rsquo;re reading this early, you&rsquo;re not just a user. You&rsquo;re building it with me. Every session you run and every place the map feels wrong shapes what ships next. Tell me when it breaks.
               </p>
             </div>
             <p className="mt-8 text-sm font-display font-semibold text-ink">— Jon, founder</p>
@@ -672,12 +675,16 @@ export default function HyFeynLanding() {
 
       {/* ─── FOOTER ─── */}
       <footer className="landing-footer w-full border-t border-outline-variant/40 bg-surface-container">
-        <div className="flex justify-center px-12 py-12 w-full max-w-7xl mx-auto">
+        <div className="flex flex-col items-center gap-6 px-12 py-12 w-full max-w-7xl mx-auto">
           <div className="flex flex-col gap-2 items-center text-center">
-            <div className="font-display font-bold text-primary text-xl flex items-center gap-2">
+            <div
+              className="font-display font-bold text-primary text-xl flex items-center gap-2"
+              title="socratink — sō·krə·tink (Socrates + think + ink)"
+            >
               <img src="/logo.png" alt="socratink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
               socratink
             </div>
+            <p className="text-xs tracking-widest uppercase text-ink-muted/70 font-medium">sō·krə·tink</p>
             <a
               href={DISCORD_INVITE_URL}
               target="_blank"
@@ -689,16 +696,20 @@ export default function HyFeynLanding() {
             </a>
             <p className="text-sm tracking-wide text-ink-muted">© 2026 socratink. A truthful map of what you can actually explain.</p>
           </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-ink-muted">
+            <a href="/privacy.html" className="hover:text-primary transition-colors">Privacy</a>
+            <a href="#how-it-works" className="hover:text-primary transition-colors">How it works</a>
+            <a href="#why-different" className="hover:text-primary transition-colors">Why it&rsquo;s different</a>
+            <ThemeToggle variant="inline" />
+          </div>
         </div>
       </footer>
-
-      <ThemeToggle />
     </div>
   );
 }
 
 // ─── ThemeToggle Component ───
-function ThemeToggle() {
+function ThemeToggle({ variant = "floating" }) {
   const THEME_STORAGE_KEY = 'learnops-theme';
   const readStoredThemePreference = () => {
     try {
@@ -733,8 +744,8 @@ function ThemeToggle() {
   const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
 
   return (
-    <button 
-      className="theme-toggle" 
+    <button
+      className={`theme-toggle ${variant === "inline" ? "theme-toggle--inline" : ""}`}
       onClick={toggleTheme}
       data-theme={themePreference}
       aria-label={label}

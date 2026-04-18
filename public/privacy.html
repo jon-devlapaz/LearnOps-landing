@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy · socratink</title>
+    <meta name="description" content="How socratink collects, uses, and protects your data." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
+    <style>
+      :root {
+        --ink: #1b1426;
+        --ink-muted: #615572;
+        --surface: #fbf8f4;
+        --surface-alt: #f3eee6;
+        --primary: #9067c6;
+        --outline: rgba(27, 20, 38, 0.12);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #f2eefb;
+          --ink-muted: #a69cb8;
+          --surface: #1a1424;
+          --surface-alt: #221a30;
+          --outline: rgba(255, 255, 255, 0.12);
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--surface);
+        color: var(--ink);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      header, main, footer {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      header {
+        padding-top: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--outline);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      header img { width: 36px; height: 36px; border-radius: 8px; }
+      header a {
+        font-family: "Manrope", sans-serif;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      main { padding-top: 2.5rem; padding-bottom: 3rem; }
+      h1 {
+        font-family: "Manrope", sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.75rem, 4vw, 2.4rem);
+        margin: 0 0 0.3rem;
+        letter-spacing: -0.02em;
+      }
+      .lead { color: var(--ink-muted); margin: 0 0 2rem; }
+      h2 {
+        font-family: "Manrope", sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin: 2.25rem 0 0.6rem;
+        letter-spacing: -0.01em;
+      }
+      p, li { color: var(--ink); }
+      p { margin: 0 0 0.9rem; }
+      ul { padding-left: 1.2rem; margin: 0 0 0.9rem; }
+      li { margin-bottom: 0.4rem; }
+      a { color: var(--primary); }
+      footer {
+        border-top: 1px solid var(--outline);
+        padding-top: 1.5rem;
+        padding-bottom: 2.5rem;
+        color: var(--ink-muted);
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      footer a { color: var(--ink-muted); text-decoration: none; }
+      footer a:hover { color: var(--primary); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/logo.png" alt="socratink" />
+      <a href="/">socratink</a>
+    </header>
+    <main>
+      <h1>Privacy</h1>
+      <p class="lead">Plain-language summary of what socratink collects, how it&rsquo;s used, and your rights. Last updated April 2026.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Waitlist email</strong> &mdash; when you submit your email, we store it to send early-access invites and product updates. Submissions are processed via Web3Forms.</li>
+        <li><strong>Material you submit to the demo</strong> &mdash; text you paste into the landing-page demo is sent to Google&rsquo;s Gemini API for extraction and evaluation. We do not persist demo text on our servers.</li>
+        <li><strong>Application account data</strong> &mdash; if you create an account at app.socratink.ai, we store your account profile and the study content you choose to upload. The map state and drill history are bound to your account.</li>
+        <li><strong>Basic site analytics</strong> &mdash; aggregate page-view data via our hosting provider (Vercel). No third-party behavioral ad tracking.</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To operate socratink &mdash; extract structure from your material, evaluate reconstructions, update your map.</li>
+        <li>To send waitlist and product updates you opted into.</li>
+        <li>To improve the product. We may review anonymized prompts or error cases to fix bugs and tune models. We do not sell or share your content.</li>
+      </ul>
+
+      <h2>Model provider</h2>
+      <p>socratink uses Google&rsquo;s Gemini API for LLM operations. Your prompts are processed under Google&rsquo;s API terms. Google states that content submitted via the Gemini API is not used to train their public models unless explicitly opted in. See <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">ai.google.dev/gemini-api/terms</a>.</p>
+
+      <h2>Your data, your choice</h2>
+      <ul>
+        <li>You can request deletion of your waitlist email, account, or any stored content at any time.</li>
+        <li>You can export the content you uploaded in a structured format on request.</li>
+        <li>Message us on <a href="https://discord.gg/ZEHqpC6vMx" rel="noopener">Discord</a> to exercise any of these and we will follow up directly.</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>We use a small number of first-party cookies and localStorage entries for session state and theme preference. No third-party advertising cookies.</p>
+
+      <h2>Children</h2>
+      <p>socratink is not directed at children under 13. If you believe a child has submitted personal information, contact us and we will remove it.</p>
+
+      <h2>Changes</h2>
+      <p>This policy will change as the product evolves. Material changes will be posted here with a new &ldquo;last updated&rdquo; date. For anything ambiguous, ask on Discord.</p>
+    </main>
+    <footer>
+      <a href="/">&larr; socratink.ai</a>
+      <span>&copy; 2026 socratink</span>
+    </footer>
+  </body>
+</html>

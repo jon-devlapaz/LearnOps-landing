@@ -1507,6 +1507,17 @@ body[data-theme="dark"] .drill-evaluation {
   opacity: 1;
 }
 
+.theme-toggle--inline {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  box-shadow: none;
+}
+
+.theme-toggle--inline:hover:not(:disabled) {
+  box-shadow: var(--shadow-card);
+}
+
 @media (max-width: 899px) {
   .landing-hero-panel {
     padding: 1.25rem 1rem;
