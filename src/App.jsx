@@ -185,7 +185,15 @@ const FAQ_ITEMS = [
   },
   {
     question: "How is this different from RemNote, Anki, or Recall?",
-    answer: "Anki is honest recall without structure. RemNote and Recall have structure but their graphs track notes and activity, not verified understanding. socratink sits at the intersection: your own material, a real dependency graph, and a map that only advances when you can actually explain the ideas inside it.",
+    answer: "Anki is honest recall without structure. RemNote and Recall have structure, but their graphs mostly track notes and activity. socratink sits at the intersection: your own material, a real dependency graph, and a map that advances only when there is evidence from your own reconstruction.",
+  },
+  {
+    question: "What do you mean by truth?",
+    answer: "Truth means the map says only what it has evidence to say. A generated graph is a hypothesis about the material. A node becomes more trustworthy only after you try to explain it, repair the gap, and later reconstruct it from memory. Reading, highlighting, or seeing an answer does not count.",
+  },
+  {
+    question: "What is socratink's philosophy of truth?",
+    answer: "socratink is built around epistemic humility: the system should not pretend to know your mind. It records observable evidence from your learning loop. The graph is truthful when it distinguishes proposed structure from recorded reconstruction, and when it refuses to turn exposure into progress.",
   },
   {
     question: "What about learners with ADHD?",
@@ -551,7 +559,7 @@ export default function HyFeynLanding() {
         <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
           <h2 className="text-4xl font-display font-bold mb-4 text-ink tracking-tight">How It Works</h2>
           <p className="text-ink-muted max-w-2xl mx-auto text-lg font-light">
-            Three steps. Your material, your map, your understanding — verified.
+            Three steps. Your material, your map, your own reconstruction on record.
           </p>
         </div>
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
@@ -579,7 +587,7 @@ export default function HyFeynLanding() {
                 <Shield size={22} className="text-primary" />
               </div>
               <h3 className="font-display font-semibold text-xl text-ink mb-2">The graph tells the truth</h3>
-              <p className="text-[15px] text-ink-muted leading-relaxed">It is not a browser. It is not a checklist. It is a record of verified understanding.</p>
+              <p className="text-[15px] text-ink-muted leading-relaxed">It is not a browser. It is not a checklist. It is a record of what you have reconstructed under drill.</p>
             </div>
             <div className="feature-card landing-card rounded-2xl bg-surface-container border border-outline-variant/30 p-8 subtle-shadow hover:-translate-y-1 transition-transform duration-300">
               <div className="w-12 h-12 rounded-xl bg-primary-dim/10 flex items-center justify-center mb-5 border border-primary-dim/20">
