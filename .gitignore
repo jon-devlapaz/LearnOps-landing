@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 .vercel
 .playwright-cli
+.playwright-mcp
 
 # Design reference files
 Revised design Methodology/

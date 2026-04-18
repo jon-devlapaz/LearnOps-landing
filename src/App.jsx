@@ -438,9 +438,14 @@ export default function HyFeynLanding() {
       <section className="landing-hero relative pt-32 pb-20 px-6 hero-gradient overflow-hidden border-b border-outline-variant/20">
         <div className="landing-hero-panel max-w-[86rem] mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] gap-8 xl:gap-10 items-center">
           <div className="landing-hero-copy min-w-0 space-y-8 relative z-10">
-            <h1 className="landing-hero-title text-[clamp(3.85rem,5.2vw,5.6rem)] font-display font-bold leading-[0.92] tracking-tight text-ink">
-              See what you can <span className="text-primary">actually explain.</span>
-            </h1>
+            <div className="space-y-3">
+              <p className="landing-hero-eyebrow font-display text-[0.72rem] md:text-sm tracking-[0.18em] uppercase text-primary/80 font-semibold">
+                A study tool for deep understanding through reconstruction
+              </p>
+              <h1 className="landing-hero-title text-[clamp(3.85rem,5.2vw,5.6rem)] font-display font-bold leading-[0.92] tracking-tight text-ink">
+                See what you can <span className="text-primary">actually explain.</span>
+              </h1>
+            </div>
             <p className="landing-hero-lede text-[1.03rem] md:text-[1.1rem] text-ink-muted max-w-[29rem] leading-relaxed font-light">
               Bring your own notes or transcript. Get a map. Explain one idea from memory. Tell me where the experience breaks.
             </p>

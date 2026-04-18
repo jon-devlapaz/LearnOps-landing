@@ -1,6 +1,6 @@
 # socratink-landing
 
-Waitlist landing page for socratink: AI-augmented study pipeline for the ADHD brain.
+Waitlist landing page for socratink — a study tool for deep understanding through reconstruction.
 
 ## Stack
 
