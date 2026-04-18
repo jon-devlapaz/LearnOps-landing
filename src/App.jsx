@@ -475,6 +475,9 @@ export default function HyFeynLanding() {
                 <ChevronRight size={16} />
               </a>
             </div>
+            <p className="landing-hero-meta text-xs md:text-sm text-ink-muted/80 font-medium -mt-2">
+              Start your first drill with your own material · free during beta · no credit card
+            </p>
           </div>
           <div className="landing-hero-preview relative min-w-0">
             <div className="absolute -inset-4 bg-primary/10 blur-[120px] rounded-full" />
@@ -561,7 +564,7 @@ export default function HyFeynLanding() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
             <p className="text-xs font-semibold text-primary-dim tracking-widest uppercase mb-3">Not another AI summary app. Not a prettier flashcard deck. Not a note graph.</p>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-ink tracking-tight">Why It Feels Different</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-ink tracking-tight">Why It's Different</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
             <div className="feature-card landing-card rounded-2xl bg-surface-container border border-outline-variant/30 p-8 subtle-shadow hover:-translate-y-1 transition-transform duration-300">
@@ -637,7 +640,7 @@ export default function HyFeynLanding() {
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-ink tracking-tight">Build a map you can test.</h2>
               <p className="text-ink-muted text-lg font-light max-w-xl mx-auto mb-8">
-                Bring your own notes or transcript. Get a map. Explain one idea from memory. Tell me where the experience breaks.
+                Paste notes or a transcript you are actually trying to learn. Rebuild one idea from memory. Then decide whether the map tells the truth.
               </p>
               <a
                 href={APP_LOGIN_URL}
@@ -648,6 +651,9 @@ export default function HyFeynLanding() {
                 tink it
                 <ArrowRight size={18} />
               </a>
+              <p className="text-xs md:text-sm text-ink-muted/80 font-medium mt-5">
+                Free during beta · no credit card · your notes stay yours
+              </p>
             </div>
           </div>
         </div>
