@@ -412,7 +412,7 @@ export default function HyFeynLanding() {
             title="socratink — sō·krə·tink (Socrates + think + ink)"
           >
             <img src="/logo.png" alt="socratink Logo" className="w-10 h-10 object-contain rounded-md shadow-sm" />
-            socratink
+            <span>socra<span className="text-primary">tink</span></span>
           </div>
           <div className="flex items-center gap-3 md:gap-5">
             <div className="hidden md:flex items-center space-x-8">
@@ -681,11 +681,11 @@ export default function HyFeynLanding() {
         <div className="flex flex-col items-center gap-6 px-12 py-12 w-full max-w-7xl mx-auto">
           <div className="flex flex-col gap-2 items-center text-center">
             <div
-              className="font-display font-bold text-primary text-xl flex items-center gap-2"
+              className="font-display font-bold text-ink text-xl flex items-center gap-2"
               title="socratink — sō·krə·tink (Socrates + think + ink)"
             >
               <img src="/logo.png" alt="socratink Logo" className="w-6 h-6 object-contain rounded flex-shrink-0" />
-              socratink
+              <span>socra<span className="text-primary">tink</span></span>
             </div>
             <p className="text-xs tracking-widest uppercase text-ink-muted/70 font-medium">sō·krə·tink</p>
             <a
