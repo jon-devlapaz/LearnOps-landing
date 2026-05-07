@@ -6,40 +6,27 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="apple-touch-icon" href="/favicon-192x192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>socratink — a study tool for deep understanding</title>
+    <title>socratink</title>
 
     <!-- SEO -->
-    <meta name="description" content="A study tool for deep understanding through reconstruction. Turn your material into a knowledge map, then rebuild ideas from memory." />
+    <meta name="description" content="socratink is a reading room for learning by reconstruction. Bring source material, try from memory, and let the evidence map change only when you reconstruct." />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="socratink — a study tool for deep understanding" />
-    <meta property="og:description" content="Deep understanding through reconstruction. Bring your own material. Rebuild one idea at a time from memory. The graph only moves when understanding is real." />
+    <meta property="og:title" content="socratink" />
+    <meta property="og:description" content="See what you can actually explain. Bring source material, sketch your starting model, then try from memory before any explanation appears." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content="/og-image.svg" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="socratink — a study tool for deep understanding" />
-    <meta name="twitter:description" content="Deep understanding through reconstruction. Bring your own material. Rebuild one idea at a time from memory. The graph only moves when understanding is real." />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:title" content="socratink" />
+    <meta name="twitter:description" content="See what you can actually explain. Bring source material, sketch your starting model, then try from memory before any explanation appears." />
+    <meta name="twitter:image" content="/og-image.svg" />
 
-    <!-- Fonts: Geom (display), Manrope (fallback), Inter (body) — self-hosted,
-         declared via @font-face in src/index.css -->
+    <!-- Font: Geom, self-hosted and declared via @font-face in src/index.css. -->
     <link rel="preload" href="/fonts/Geom-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="preload" href="/fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin />
   </head>
   <body>
-    <script>
-      try {
-        if (localStorage.getItem('learnops-theme') === 'dark') {
-          document.documentElement.dataset.theme = 'dark';
-          document.body.classList.add('night');
-          document.body.dataset.theme = 'dark';
-        }
-      } catch (err) {
-        console.warn('Theme preload skipped.', err);
-      }
-    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

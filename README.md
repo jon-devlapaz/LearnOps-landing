@@ -1,44 +1,24 @@
 # socratink-landing
 
-Waitlist landing page for socratink — a study tool for deep understanding through reconstruction.
+Marketing landing page for socratink, a reading-room tool for learning by reconstruction.
 
 ## Stack
 
 - React 19 + Vite 8
-- Tailwind CSS v4
-- Lucide React (icons)
-- Google Gemini (demo extraction + evaluation)
-- Web3Forms (waitlist capture)
-- Vercel (deployment + serverless functions)
+- Lucide React (small interface icons)
+- Vercel (deployment)
 
 ## Development
 
-Requires the Vercel CLI to run the `/api` serverless functions locally:
+Install dependencies, then run the Vite dev server:
 
 ```bash
 npm install
-vercel dev
+npm run dev
 ```
 
-Create `.env.local` in the project root:
-
-```
-GEMINI_API_KEY=your_key_here
-VITE_WEB3FORMS_ACCESS_KEY=your_key_here
-```
+The current landing page is static client UI. It links to `app.socratink.ai` for sign-in and guest entry.
 
 ## Deployment
 
 Deploys automatically to Vercel on push to `main`.
-
-Set both environment variables in Vercel dashboard (Settings → Environment Variables):
-
-```
-GEMINI_API_KEY=your_key_here
-VITE_WEB3FORMS_ACCESS_KEY=your_key_here
-```
-
-## API Routes
-
-- `POST /api/demo-extract` — extracts causal mechanisms from pasted text, returns a Socratic question
-- `POST /api/demo-evaluate` — evaluates student answer against extracted mechanisms, returns gap analysis

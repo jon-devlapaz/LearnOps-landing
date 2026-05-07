@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>socratink hero canvas directions</title>
+    <style>
+      @font-face {
+        font-family: "Geom";
+        src: url("../public/fonts/Geom-VariableFont_wght.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("../public/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+        font-weight: 100 900;
+      }
+
+      :root {
+        --cream-50: #f7ece1;
+        --cream-100: #fff8f0;
+        --ink-900: #242038;
+        --ink-700: #4f4864;
+        --ink-500: #716a83;
+        --violet-600: #9067c6;
+        --lavender-500: #8d86c9;
+        --mauve-200: #cac4ce;
+        --success: #4dba8a;
+        --paper: rgba(255, 255, 255, 0.66);
+        --line: rgba(36, 32, 56, 0.12);
+        --line-strong: rgba(144, 103, 198, 0.34);
+        --shadow: 0 22px 70px rgba(74, 55, 103, 0.14);
+        --shadow-soft: 0 12px 38px rgba(74, 55, 103, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 18% 0%, rgba(141, 134, 201, 0.18), transparent 34rem),
+          linear-gradient(180deg, var(--cream-50), #f3e4d6);
+        color: var(--ink-900);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      .page {
+        width: min(1380px, calc(100% - 36px));
+        margin: 0 auto;
+        padding: 44px 0 64px;
+      }
+
+      .brief {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(18rem, 0.42fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 30px;
+      }
+
+      .kicker,
+      .direction-kicker,
+      .label {
+        color: var(--violet-600);
+        font-size: 0.72rem;
+        font-weight: 760;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        letter-spacing: -0.04em;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 10px 0 0;
+        font-size: clamp(3rem, 6vw, 6rem);
+        line-height: 0.92;
+      }
+
+      .brief p {
+        margin: 0;
+        color: var(--ink-700);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .stack {
+        display: grid;
+        gap: 32px;
+      }
+
+      .mockup {
+        overflow: hidden;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 28px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(247, 236, 225, 0.72)),
+          var(--cream-50);
+        box-shadow: var(--shadow);
+      }
+
+      .mockup-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 22px 26px 0;
+      }
+
+      .mockup-head h2 {
+        margin: 6px 0 0;
+        font-size: clamp(1.55rem, 2.5vw, 2.45rem);
+        line-height: 0.98;
+      }
+
+      .mockup-note {
+        max-width: 440px;
+        color: var(--ink-500);
+        font-size: 0.92rem;
+        line-height: 1.55;
+      }
+
+      .hero-frame {
+        margin: 22px;
+        min-height: 560px;
+        overflow: hidden;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 22px;
+        background:
+          radial-gradient(circle at 74% 16%, rgba(141, 134, 201, 0.17), transparent 23rem),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(247, 236, 225, 0.82));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.84),
+          0 12px 44px rgba(74, 55, 103, 0.1);
+      }
+
+      .hero-shell {
+        display: grid;
+        grid-template-columns: minmax(20rem, 0.78fr) minmax(0, 1.22fr);
+        gap: 28px;
+        min-height: 560px;
+        padding: 38px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        min-width: 0;
+      }
+
+      .hero-copy h3 {
+        margin: 12px 0 18px;
+        max-width: 560px;
+        font-size: clamp(3rem, 5.4vw, 5.8rem);
+        line-height: 0.9;
+      }
+
+      .hero-copy p {
+        max-width: 430px;
+        margin: 0;
+        color: var(--ink-700);
+        font-size: 1.04rem;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 21px;
+        border: 1px solid rgba(144, 103, 198, 0.18);
+        border-radius: 999px;
+        background: linear-gradient(180deg, #9b73ce, var(--violet-600));
+        color: white;
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-weight: 720;
+        letter-spacing: -0.02em;
+        box-shadow: 0 12px 28px rgba(144, 103, 198, 0.24);
+      }
+
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.34);
+        color: var(--ink-700);
+        box-shadow: none;
+      }
+
+      .canvas {
+        position: relative;
+        min-height: 468px;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 20px;
+        background:
+          linear-gradient(rgba(144, 103, 198, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(144, 103, 198, 0.055) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 236, 225, 0.74));
+        background-size: 26px 26px, 26px 26px, auto;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .canvas::before,
+      .canvas::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(36, 32, 56, 0.28) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(36, 32, 56, 0.28) 1px, transparent 1px);
+        background-size: 18px 1px, 1px 18px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .canvas::before {
+        top: 16px;
+        left: 16px;
+      }
+
+      .canvas::after {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .window-bar {
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        height: 56px;
+        padding: 0 17px;
+        border-bottom: 1px solid rgba(36, 32, 56, 0.09);
+        background: rgba(255, 255, 255, 0.46);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-weight: 760;
+        letter-spacing: -0.03em;
+      }
+
+      .mark {
+        width: 16px;
+        height: 18px;
+      }
+
+      .phase-row {
+        display: flex;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .phase {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 11px;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.42);
+        color: var(--ink-500);
+        font-size: 0.68rem;
+        font-weight: 720;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .phase.active {
+        border-color: rgba(144, 103, 198, 0.28);
+        background: rgba(144, 103, 198, 0.12);
+        color: var(--ink-900);
+      }
+
+      .board {
+        position: absolute;
+        inset: 72px auto auto 50%;
+        width: min(520px, calc(100% - 52px));
+        height: 330px;
+        transform: translateX(-50%);
+      }
+
+      .link {
+        position: absolute;
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(36, 32, 56, 0.12);
+        transform-origin: left center;
+      }
+
+      .link.strong {
+        background: rgba(144, 103, 198, 0.42);
+      }
+
+      .link.dashed {
+        background: repeating-linear-gradient(90deg, rgba(36, 32, 56, 0.2), rgba(36, 32, 56, 0.2) 5px, transparent 5px, transparent 10px);
+      }
+
+      .tile {
+        position: absolute;
+        width: 132px;
+        height: 92px;
+        transform: translate(-50%, -50%);
+        --crystal-a: #d9eef8;
+        --crystal-b: #a9cfe7;
+        --crystal-c: #6eaed1;
+        --crystal-glow: rgba(144, 103, 198, 0.18);
+        --crystal-specular: rgba(255, 255, 255, 0.65);
+        --crystal-stroke: rgba(36, 32, 56, 0.24);
+      }
+
+      .tile svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .tile-top {
+        fill: rgba(255, 255, 255, 0.74);
+        stroke: rgba(144, 103, 198, 0.4);
+        stroke-width: 1.4;
+      }
+
+      .tile-left {
+        fill: rgba(141, 134, 201, 0.22);
+      }
+
+      .tile-right {
+        fill: rgba(144, 103, 198, 0.18);
+      }
+
+      .tile.locked {
+        opacity: 0.48;
+        --crystal-a: rgba(202, 196, 206, 0.45);
+        --crystal-b: rgba(202, 196, 206, 0.3);
+        --crystal-c: rgba(36, 32, 56, 0.22);
+        --crystal-glow: rgba(202, 196, 206, 0.16);
+      }
+
+      .tile.locked .tile-top {
+        fill: rgba(247, 236, 225, 0.55);
+        stroke-dasharray: 4 4;
+        stroke: rgba(36, 32, 56, 0.2);
+      }
+
+      .tile.locked .crystal {
+        opacity: 0.22;
+      }
+
+      .tile.ready .tile-top {
+        stroke: rgba(144, 103, 198, 0.58);
+      }
+
+      .tile.primed {
+        --crystal-a: #d9eef8;
+        --crystal-b: #a9cfe7;
+        --crystal-c: #6eaed1;
+        --crystal-glow: rgba(110, 174, 209, 0.2);
+      }
+
+      .tile.drilled {
+        --crystal-a: #f0d9b7;
+        --crystal-b: #d9a14a;
+        --crystal-c: #8f5f16;
+        --crystal-glow: rgba(217, 161, 74, 0.16);
+      }
+
+      .tile.solidified {
+        --crystal-a: #cfc8ff;
+        --crystal-b: #9067c6;
+        --crystal-c: #5d4385;
+        --crystal-glow: rgba(144, 103, 198, 0.24);
+      }
+
+      .tile-label {
+        position: absolute;
+        left: 50%;
+        top: 72px;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: 130px;
+        color: var(--ink-700);
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 740;
+        letter-spacing: -0.02em;
+        text-align: center;
+      }
+
+      .tile.locked .tile-label {
+        color: rgba(36, 32, 56, 0.38);
+      }
+
+      .evidence-legend {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
+        z-index: 3;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 30px;
+        padding: 0 11px;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--ink-700);
+        font-size: 0.74rem;
+        font-weight: 690;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--mauve-200);
+      }
+
+      .dot.draft {
+        border: 1px dashed rgba(36, 32, 56, 0.38);
+        background: transparent;
+      }
+
+      .dot.primed {
+        background: #6eaed1;
+      }
+
+      .dot.drilled {
+        background: #d9a14a;
+      }
+
+      .dot.solid {
+        background: var(--violet-600);
+      }
+
+      .side-panel {
+        position: absolute;
+        right: 18px;
+        top: 76px;
+        z-index: 5;
+        width: 246px;
+        padding: 16px;
+        border: 1px solid rgba(36, 32, 56, 0.11);
+        border-radius: 17px;
+        background: rgba(255, 255, 255, 0.64);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(16px);
+      }
+
+      .side-panel h4 {
+        margin: 7px 0 9px;
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 1.2rem;
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+      }
+
+      .side-panel p {
+        margin: 0;
+        color: var(--ink-700);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
+      .text-field {
+        min-height: 98px;
+        margin-top: 13px;
+        padding: 12px;
+        border: 1px solid rgba(36, 32, 56, 0.12);
+        border-radius: 13px;
+        background: rgba(247, 236, 225, 0.58);
+        color: var(--ink-700);
+        font-size: 0.82rem;
+        line-height: 1.48;
+      }
+
+      .micro-button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        margin-top: 12px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: var(--ink-900);
+        color: var(--cream-50);
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 0.76rem;
+        font-weight: 720;
+      }
+
+      .repair-card {
+        position: absolute;
+        z-index: 5;
+        width: 318px;
+        padding: 17px;
+        border: 1px solid rgba(36, 32, 56, 0.11);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(18px);
+      }
+
+      .repair-card h4 {
+        margin: 7px 0 12px;
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 1.18rem;
+        letter-spacing: -0.035em;
+      }
+
+      .repair-row {
+        display: grid;
+        gap: 7px;
+        padding: 10px 0;
+        border-top: 1px solid rgba(36, 32, 56, 0.08);
+      }
+
+      .repair-row:first-of-type {
+        border-top: 0;
+      }
+
+      .repair-row strong {
+        color: var(--ink-900);
+        font-size: 0.78rem;
+      }
+
+      .repair-row span,
+      .repair-row p {
+        margin: 0;
+        color: var(--ink-700);
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .causal-spine {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+
+      .spine-node {
+        padding: 6px 9px;
+        border: 1px solid rgba(144, 103, 198, 0.18);
+        border-radius: 999px;
+        background: rgba(144, 103, 198, 0.09);
+        color: var(--ink-700);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .bridge-card {
+        position: absolute;
+        left: 24px;
+        bottom: 58px;
+        z-index: 5;
+        width: min(420px, calc(100% - 48px));
+        padding: 16px;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.68);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(18px);
+      }
+
+      .bridge-card h4 {
+        margin: 6px 0 8px;
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 1.16rem;
+        letter-spacing: -0.035em;
+      }
+
+      .bridge-card p {
+        margin: 0 0 12px;
+        color: var(--ink-700);
+        font-size: 0.82rem;
+        line-height: 1.48;
+      }
+
+      .choice-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .choice {
+        padding: 8px 10px;
+        border: 1px solid rgba(144, 103, 198, 0.18);
+        border-radius: 12px;
+        background: rgba(247, 236, 225, 0.58);
+        color: var(--ink-700);
+        font-size: 0.75rem;
+        font-weight: 690;
+      }
+
+      .proof-card {
+        position: absolute;
+        right: 22px;
+        bottom: 58px;
+        z-index: 6;
+        width: 314px;
+        padding: 18px;
+        border: 1px solid rgba(144, 103, 198, 0.22);
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 236, 225, 0.76));
+        box-shadow: 0 18px 52px rgba(144, 103, 198, 0.16);
+      }
+
+      .proof-card h4 {
+        margin: 7px 0 8px;
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 1.28rem;
+        line-height: 1.04;
+        letter-spacing: -0.035em;
+      }
+
+      .proof-card p {
+        margin: 0;
+        color: var(--ink-700);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
+      .proof-meter {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin: 14px 0;
+      }
+
+      .proof-meter span {
+        height: 6px;
+        border-radius: 999px;
+        background: rgba(144, 103, 198, 0.18);
+      }
+
+      .proof-meter span.filled {
+        background: var(--violet-600);
+      }
+
+      .timeline {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 16px;
+        z-index: 4;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+
+      .step {
+        min-height: 58px;
+        padding: 10px;
+        border: 1px solid rgba(36, 32, 56, 0.09);
+        border-radius: 13px;
+        background: rgba(255, 255, 255, 0.48);
+      }
+
+      .step strong {
+        display: block;
+        color: var(--ink-900);
+        font-size: 0.72rem;
+      }
+
+      .step span {
+        display: block;
+        margin-top: 3px;
+        color: var(--ink-500);
+        font-size: 0.68rem;
+        line-height: 1.25;
+      }
+
+      .step.active {
+        border-color: rgba(144, 103, 198, 0.26);
+        background: rgba(144, 103, 198, 0.1);
+      }
+
+      .direction-b .hero-shell,
+      .direction-c .hero-shell {
+        grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr);
+      }
+
+      .direction-b .hero-copy,
+      .direction-c .hero-copy {
+        order: 2;
+      }
+
+      .direction-b .canvas,
+      .direction-c .canvas {
+        order: 1;
+      }
+
+      .direction-b .board {
+        left: 41%;
+        width: 438px;
+      }
+
+      .direction-b .side-panel {
+        right: 22px;
+        top: 82px;
+      }
+
+      .direction-b .repair-card {
+        left: 24px;
+        top: 90px;
+      }
+
+      .direction-c .board {
+        top: 76px;
+      }
+
+      .direction-c .side-panel {
+        left: 20px;
+        right: auto;
+        top: 78px;
+      }
+
+      .direction-c .proof-card {
+        right: 22px;
+        top: 86px;
+        bottom: auto;
+      }
+
+      .direction-c .tile.solidified {
+        filter: drop-shadow(0 0 18px rgba(144, 103, 198, 0.32));
+      }
+
+      .recommendation {
+        display: grid;
+        gap: 8px;
+        margin-top: 18px;
+        padding: 14px;
+        border: 1px solid rgba(36, 32, 56, 0.1);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .recommendation strong {
+        color: var(--ink-900);
+        font-family: "Geom", "Inter", system-ui, sans-serif;
+        font-size: 1rem;
+        letter-spacing: -0.03em;
+      }
+
+      .recommendation span {
+        color: var(--ink-700);
+        font-size: 0.86rem;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 1020px) {
+        .brief,
+        .hero-shell,
+        .direction-b .hero-shell,
+        .direction-c .hero-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .direction-b .hero-copy,
+        .direction-c .hero-copy,
+        .direction-b .canvas,
+        .direction-c .canvas {
+          order: initial;
+        }
+
+        .hero-frame,
+        .hero-shell {
+          min-height: 0;
+        }
+
+        .canvas {
+          min-height: 520px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(100% - 22px, 1380px);
+          padding-top: 28px;
+        }
+
+        .mockup-head {
+          display: block;
+        }
+
+        .hero-shell {
+          padding: 22px;
+        }
+
+        .hero-copy h3 {
+          font-size: clamp(2.55rem, 14vw, 4rem);
+        }
+
+        .phase-row {
+          display: none;
+        }
+
+        .board {
+          transform: translateX(-50%) scale(0.76);
+          transform-origin: top center;
+        }
+
+        .side-panel,
+        .repair-card,
+        .proof-card,
+        .bridge-card {
+          width: auto;
+          left: 16px;
+          right: 16px;
+        }
+
+        .repair-card,
+        .proof-card {
+          top: auto;
+          bottom: 84px;
+        }
+
+        .timeline {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .direction-c .side-panel {
+          display: none;
+        }
+
+        .step:nth-child(n + 5) {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" focusable="false">
+      <symbol id="brand-crystal" viewBox="0 0 36 42">
+        <path d="M18 1 32 12 18 41 4 12Z" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M18 1v40M4 12h28M18 1 10 12l8 29 8-29Z" fill="none" stroke="currentColor" stroke-width="1.35" />
+      </symbol>
+      <symbol id="tile-crystal" viewBox="0 0 78 92">
+        <ellipse cx="39" cy="52" rx="24" ry="26" fill="var(--crystal-glow)" opacity="0.95" />
+        <path d="M39 5 62 24 39 88 16 24Z" fill="var(--crystal-a)" stroke="var(--crystal-stroke)" stroke-width="0.8" />
+        <path d="M39 5 39 88 16 24Z" fill="var(--crystal-b)" stroke="var(--crystal-stroke)" stroke-width="0.8" />
+        <path d="M39 5 62 24 39 88Z" fill="var(--crystal-c)" stroke="var(--crystal-stroke)" stroke-width="0.8" />
+        <path d="M16 24h46L39 38Z" fill="var(--crystal-a)" stroke="var(--crystal-stroke)" stroke-width="0.8" opacity="0.78" />
+        <path fill="var(--crystal-specular)" d="M31 18 39 5l7 13-7 20Z" opacity="0.45" />
+      </symbol>
+    </svg>
+
+    <main class="page">
+      <header class="brief">
+        <div>
+          <div class="kicker">hero canvas mockups</div>
+          <h1>Three directions for a more truthful first impression.</h1>
+        </div>
+        <p>
+          These are static direction boards, not production UI. They test what the hero should foreground: the evidence-weighted map, the learner repair loop, or the final proof event.
+        </p>
+      </header>
+
+      <section class="stack">
+        <article class="mockup direction-a">
+          <div class="mockup-head">
+            <div>
+              <div class="direction-kicker">direction a</div>
+              <h2>Board first: the map proposes, evidence records.</h2>
+            </div>
+            <p class="mockup-note">
+              Best if the hero should make the graph doctrine legible fast. The canvas separates draft structure from node evidence before showing any answer.
+            </p>
+          </div>
+
+          <div class="hero-frame">
+            <div class="hero-shell">
+              <div class="hero-copy">
+                <div class="kicker">deep understanding through reconstruction</div>
+                <h3>See what the map has evidence for.</h3>
+                <p>
+                  Bring your material. socratink drafts a route, then waits for your own reconstruction before the graph becomes more trustworthy.
+                </p>
+                <div class="actions">
+                  <span class="button">tink it</span>
+                  <span class="button secondary">See how the map works</span>
+                </div>
+                <div class="recommendation">
+                  <strong>Direction read</strong>
+                  <span>Most honest, most product-specific, least dependent on demo copy. The board itself carries the promise.</span>
+                </div>
+              </div>
+
+              <div class="canvas">
+                <div class="window-bar">
+                  <div class="brand">
+                    <svg class="mark"><use href="#brand-crystal" /></svg>
+                    <span>socratink</span>
+                  </div>
+                  <div class="phase-row">
+                    <span class="phase active">draft path</span>
+                    <span class="phase">cold attempt</span>
+                    <span class="phase">repair</span>
+                    <span class="phase">spaced re-drill</span>
+                  </div>
+                </div>
+
+                <div class="board">
+                  <span class="link dashed" style="left: 115px; top: 126px; width: 158px; transform: rotate(-19deg);"></span>
+                  <span class="link dashed" style="left: 116px; top: 126px; width: 145px; transform: rotate(25deg);"></span>
+                  <span class="link strong" style="left: 244px; top: 116px; width: 126px; transform: rotate(26deg);"></span>
+                  <span class="link" style="left: 246px; top: 218px; width: 118px; transform: rotate(-24deg);"></span>
+
+                  <div class="tile solidified" style="left: 116px; top: 122px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Core thesis</span>
+                  </div>
+
+                  <div class="tile primed ready" style="left: 254px; top: 86px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Momentum</span>
+                  </div>
+
+                  <div class="tile drilled" style="left: 248px; top: 218px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Mass</span>
+                  </div>
+
+                  <div class="tile locked" style="left: 374px; top: 152px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Energy</span>
+                  </div>
+                </div>
+
+                <aside class="side-panel">
+                  <div class="label">active room</div>
+                  <h4>Momentum</h4>
+                  <p>This node is primed. Work another reachable room before returning for proof.</p>
+                  <div class="text-field">Your first attempt is recorded. Study can repair it, but study will not change graph truth.</div>
+                  <span class="micro-button">Choose next room</span>
+                </aside>
+
+                <div class="evidence-legend">
+                  <span class="pill"><span class="dot draft"></span> draft route</span>
+                  <span class="pill"><span class="dot primed"></span> primed for study</span>
+                  <span class="pill"><span class="dot drilled"></span> worth revisiting</span>
+                  <span class="pill"><span class="dot solid"></span> solidified through spaced reconstruction</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="mockup direction-b">
+          <div class="mockup-head">
+            <div>
+              <div class="direction-kicker">direction b</div>
+              <h2>Repair first: the learner's words become the artifact.</h2>
+            </div>
+            <p class="mockup-note">
+              Best if the hero should distinguish socratink from summary tools. The repair card makes Generation Before Recognition visible.
+            </p>
+          </div>
+
+          <div class="hero-frame">
+            <div class="hero-shell">
+              <div class="hero-copy">
+                <div class="kicker">not another summary app</div>
+                <h3>Study after you have something to repair.</h3>
+                <p>
+                  socratink asks for a small first attempt, then shows the hinge between your model and the mechanism.
+                </p>
+                <div class="actions">
+                  <span class="button">tink it</span>
+                  <span class="button secondary">See the loop</span>
+                </div>
+                <div class="recommendation">
+                  <strong>Direction read</strong>
+                  <span>Best for conversion clarity. It explains why the product feels different, but the board is less dominant.</span>
+                </div>
+              </div>
+
+              <div class="canvas">
+                <div class="window-bar">
+                  <div class="brand">
+                    <svg class="mark"><use href="#brand-crystal" /></svg>
+                    <span>socratink</span>
+                  </div>
+                  <div class="phase-row">
+                    <span class="phase">draft path</span>
+                    <span class="phase active">cold attempt</span>
+                    <span class="phase">repair</span>
+                    <span class="phase">interleave</span>
+                  </div>
+                </div>
+
+                <div class="board">
+                  <span class="link strong" style="left: 116px; top: 126px; width: 154px; transform: rotate(-18deg);"></span>
+                  <span class="link dashed" style="left: 118px; top: 126px; width: 140px; transform: rotate(28deg);"></span>
+                  <span class="link" style="left: 252px; top: 92px; width: 110px; transform: rotate(35deg);"></span>
+
+                  <div class="tile solidified" style="left: 116px; top: 122px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Motion</span>
+                  </div>
+
+                  <div class="tile primed ready" style="left: 258px; top: 84px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Momentum</span>
+                  </div>
+
+                  <div class="tile locked" style="left: 372px; top: 156px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Energy</span>
+                  </div>
+                </div>
+
+                <section class="repair-card">
+                  <div class="label">repair artifact</div>
+                  <h4>Momentum</h4>
+                  <div class="repair-row">
+                    <strong>Your words</strong>
+                    <p>"Momentum is force that keeps going."</p>
+                  </div>
+                  <div class="repair-row">
+                    <strong>The hinge</strong>
+                    <p>Force is not stored. Impulse changes momentum over time.</p>
+                  </div>
+                  <div class="repair-row">
+                    <strong>Causal spine</strong>
+                    <div class="causal-spine">
+                      <span class="spine-node">force</span>
+                      <span class="spine-node">time</span>
+                      <span class="spine-node">impulse</span>
+                      <span class="spine-node">motion change</span>
+                    </div>
+                  </div>
+                </section>
+
+                <aside class="side-panel">
+                  <div class="label">local attempt</div>
+                  <h4>Explain the causal link.</h4>
+                  <p>This is not scored. It gives the repair layer something real to work with.</p>
+                  <div class="text-field">If force acts longer, the object's motion changes more because...</div>
+                  <span class="micro-button">Submit first attempt</span>
+                </aside>
+
+                <div class="evidence-legend">
+                  <span class="pill"><span class="dot primed"></span> attempt recorded</span>
+                  <span class="pill"><span class="dot draft"></span> study has no graph-truth mutation</span>
+                  <span class="pill"><span class="dot solid"></span> proof waits for spacing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="mockup direction-c">
+          <div class="mockup-head">
+            <div>
+              <div class="direction-kicker">direction c</div>
+              <h2>Proof event first: the payoff is earned, not automatic.</h2>
+            </div>
+            <p class="mockup-note">
+              Best if the hero should feel more cinematic. The canvas shows a successful spaced re-drill while keeping the constraints visible.
+            </p>
+          </div>
+
+          <div class="hero-frame">
+            <div class="hero-shell">
+              <div class="hero-copy">
+                <div class="kicker">no fake progress</div>
+                <h3>The graph moves when proof holds.</h3>
+                <p>
+                  Reading does not count. Familiarity does not count. A spaced explanation from memory is the proof event.
+                </p>
+                <div class="actions">
+                  <span class="button">tink it</span>
+                  <span class="button secondary">Watch the proof loop</span>
+                </div>
+                <div class="recommendation">
+                  <strong>Direction read</strong>
+                  <span>Most emotionally satisfying. Riskier unless the animation clearly shows spacing before solidified.</span>
+                </div>
+              </div>
+
+              <div class="canvas">
+                <div class="window-bar">
+                  <div class="brand">
+                    <svg class="mark"><use href="#brand-crystal" /></svg>
+                    <span>socratink</span>
+                  </div>
+                  <div class="phase-row">
+                    <span class="phase">attempt</span>
+                    <span class="phase">repair</span>
+                    <span class="phase">spacing</span>
+                    <span class="phase active">proof</span>
+                  </div>
+                </div>
+
+                <div class="board">
+                  <span class="link strong" style="left: 116px; top: 126px; width: 156px; transform: rotate(-19deg);"></span>
+                  <span class="link dashed" style="left: 116px; top: 126px; width: 146px; transform: rotate(27deg);"></span>
+                  <span class="link strong" style="left: 252px; top: 88px; width: 126px; transform: rotate(29deg);"></span>
+                  <span class="link" style="left: 248px; top: 220px; width: 118px; transform: rotate(-26deg);"></span>
+
+                  <div class="tile solidified" style="left: 116px; top: 122px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Motion</span>
+                  </div>
+
+                  <div class="tile solidified" style="left: 258px; top: 84px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Momentum</span>
+                  </div>
+
+                  <div class="tile drilled" style="left: 248px; top: 218px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                      <use class="crystal" href="#tile-crystal" x="27" y="-9" width="78" height="92" />
+                    </svg>
+                    <span class="tile-label">Mass</span>
+                  </div>
+
+                  <div class="tile ready" style="left: 382px; top: 154px;">
+                    <svg viewBox="0 0 132 92">
+                      <path class="tile-left" d="M14 38 66 66v20L14 58Z" />
+                      <path class="tile-right" d="M66 66 118 38v20L66 86Z" />
+                      <path class="tile-top" d="M14 38 66 10l52 28-52 28Z" />
+                    </svg>
+                    <span class="tile-label">Ready for first attempt</span>
+                  </div>
+                </div>
+
+                <aside class="side-panel">
+                  <div class="label">spaced re-drill</div>
+                  <h4>Reconstruct from memory.</h4>
+                  <p>Walk through why force applied over time changes momentum.</p>
+                  <div class="text-field">A force over an interval creates impulse. That impulse changes momentum, which changes the motion state...</div>
+                </aside>
+
+                <section class="proof-card">
+                  <div class="label">proof event</div>
+                  <h4>Solid reconstruction recorded.</h4>
+                  <p>Momentum is now solidified through spaced reconstruction. The next room becomes available.</p>
+                  <div class="proof-meter">
+                    <span class="filled"></span>
+                    <span class="filled"></span>
+                    <span class="filled"></span>
+                    <span></span>
+                  </div>
+                  <span class="micro-button">Continue</span>
+                </section>
+
+                <div class="timeline">
+                  <div class="step"><strong>draft</strong><span>route proposed</span></div>
+                  <div class="step"><strong>attempt</strong><span>first signal</span></div>
+                  <div class="step"><strong>repair</strong><span>study, no graph change</span></div>
+                  <div class="step"><strong>spacing</strong><span>another room worked</span></div>
+                  <div class="step active"><strong>proof</strong><span>solid re-drill</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
